@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beit-El Tibeb - Cultural Training Institute</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #F4A460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(139, 69, 19, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(139, 69, 19, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #FFD700;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #8B4513;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #FFD700;
+        }
+
+        /* Enhanced Slideshow Styles */
+        .advertising-section {
+            padding: 2rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #F5F5DC 0%, #FFF8DC 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #8B4513;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .rotating-banner {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .banner-slide {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 500px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .banner-slide.active {
+            display: block;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .banner-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        /* Navigation Arrows */
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(139, 69, 19, 0.8);
+            color: #FFD700;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-nav:hover {
+            background: rgba(139, 69, 19, 1);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        /* Slide Indicators */
+        .slide-indicators {
+            text-align: center;
+            padding: 20px 0;
+            background: white;
+        }
+
+        .indicator {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #FF6B35;
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: #F7931E;
+            transform: scale(1.1);
+        }
+
+        /* Slide Counter */
+        .slide-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 10;
+        }
+
+        /* Slide Caption */
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .slide-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .slide-caption p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 100%);
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .team-member-card h3 {
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member-card .role {
+            color: #FF6B35;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member-card .credentials {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-member-card .click-hint {
+            color: #0066cc;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-member-card .click-hint a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .team-member-card .click-hint a:hover {
+            text-decoration: underline;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #F5F5DC 0%, #FFF8DC 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+        }
+
+        .program-image {
+            height: 250px;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        .program-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #8B4513;
+        }
+
+        .program-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .duration {
+            background: #FFE4B5;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #D2691E;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #FF6B35;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #F5F5DC 0%, #FFF8DC 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .contact-form h3 {
+            color: #8B4513;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF6B35;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            min-width: 50px;
+        }
+
+        .contact-item h4 {
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Social Media Section */
+        .social-media {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .social-media h1 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .social-media p {
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .social-link.facebook {
+            background-color: #1877f2;
+            color: white;
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            color: white;
+        }
+
+        .social-link.twitter {
+            background-color: #1da1f2;
+            color: white;
+        }
+
+        .social-link.tiktok {
+            background-color: #000;
+            color: white;
+        }
+
+        .social-link .icon {
+            font-size: 20px;
+        }
+
+        .social-link span:last-child {
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #8B4513;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .prev {
+                left: 10px;
+            }
+
+            .next {
+                right: 10px;
+            }
+
+            .banner-slide {
+                height: 300px;
+            }
+
+            .rotating-banner {
+                height: 300px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-link {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../static/img/22.jpeg" alt="Beit-El Tibeb Logo" class="logo-image">
+                <div class="logo-icon">B</div>
+                <span>Beite-Tibeb (Wisdom)</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#team">Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Beit-El Tibeb</h1>
+            <p>Cultural Training Institute - Preserving Ethiopian-Israeli Heritage Through Art & Craft</p>
+            <a href="#programs" class="cta-button">Explore Programs</a>
+        </div>
+    </section>
+
+    <!-- Advertising Section with Slideshow -->
+    <section id="advertising" class="advertising-section">
+        <div class="container">
+            <h2 class="section-title">Workshops Overviews</h2>
+
+            <div class="rotating-banner">
+                <div class="banner-slide active">
+                    <img src="../static/img/1.jpeg" alt="Workshop 1">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/2.jpeg" alt="Workshop 2">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/3.jpeg" alt="Workshop 3">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/4.jpeg" alt="Workshop 4">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/5.jpeg" alt="Workshop 5">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/6.jpeg" alt="Workshop 6">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/7.jpeg" alt="Workshop 7">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/8.jpeg" alt="Workshop 8">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/9.jpeg" alt="Workshop 9">
+                </div>
+                <div class="banner-slide">
+                    <img src="../static/img/10.jpeg" alt="Workshop 10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="team-container">
+            <h2 class="section-title fade-in">Our Team Leaders</h2>
+            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 2rem;">
+                Meet the passionate experts behind Beit-El Tibeb Cultural Training Institute
+            </p>
+
+            <div class="team-grid">
+                <!-- Asmamaw Yehun -->
+                <div class="team-member-card fade-in">
+                    <div class="team-avatar">AC</div>
+                    <h3>Asmamaw Yehun</h3>
+                    <p class="role">Founder, CEO & Software Administrator</p>
+                    <p class="credentials">PhD in Physics, Certified Software Engineer</p>
+                    <p class="click-hint"><a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank">LinkedIn Profile</a></p>
+                    <p>Founder, CEO & Software Administrator with PhD in Physics and Certified Software Engineer credentials. I bring extensive leadership and technical expertise to Beit-El Tibeb. As founder and general manager, I oversee the technological infrastructure and strategic direction of our cultural institute.</p>
+                </div>
+
+                <!-- Elsabet Belayneh -->
+                <div class="team-member-card fade-in">
+                    <div class="team-avatar">EB</div>
+                    <h3>Elsabet Belayneh</h3>
+                    <p class="role">Founder & Cultural Heritage Director</p>
+                    <p class="credentials">BSc in Fine Arts, Cultural Studies Specialist</p>
+                    <p class="click-hint"><a href="https://www.linkedin.com/" target="_blank">LinkedIn Profile</a></p>
+                    <p>As co-founder and cultural heritage director, I bring deep expertise in Ethiopian-Israeli traditions, arts, and cultural practices. My role centers on preserving authentic cultural knowledge and training the next generation of cultural ambassadors.</p>
+                </div>
+
+                <!-- XX YY -->
+                <div class="team-member-card fade-in">
+                    <div class="team-avatar">XY</div>
+                    <h3>XX YY</h3>
+                    <p class="role">Finance & Registration Administrator</p>
+                    <p class="credentials">MBA in Finance, Administrative Management Specialist</p>
+                    <p class="click-hint"><a href="https://www.linkedin.com/" target="_blank">LinkedIn Profile</a></p>
+                    <p>I oversee all financial operations and student registration processes at Beit-El Tibeb. My role ensures smooth administrative functions while maintaining the highest standards of financial transparency and accountability.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <h3 style="color: #8B4513; margin-bottom: 1rem;">Why Choose Beit-El Tibeb</h3>
+                <p style="color: #666; font-size: 1.1rem; line-height: 1.8;">
+                    We combine cultural authenticity, expert leadership, and innovative educational methods to preserve and share the richness of Ethiopian-Israeli heritage. Our programs are designed to empower individuals with traditional knowledge while using modern platforms to reach and unite our community worldwide.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Our Institute</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>Beit-El Tibeb is a global center dedicated to empowering Ethiopian-Israeli culture, heritage, and art. We serve as a living bridge between worlds, offering authentic experiences through traditional crafts, culinary arts, and cultural workshops.</p>
+                    <br>
+                    <p>Our institute preserves the true roots of Beta Israel culture while fostering connections between generations, building cultural pride, and inspiring all who encounter our rich traditions.</p>
+                    <br>
+                    <p>Join us in this journey of cultural preservation and artistic excellence, where every workshop tells a story and every creation carries the wisdom of our ancestors.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDUwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iNDAwIiBmaWxsPSJ1cmwoI2dyYWQpIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjIwMCIgcj0iMTAwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMykiLz4KPHN2ZyB4PSIyMDAiIHk9IjE1MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPgo8cGF0aCBkPSJNMjAgODBDMjAgODBTIDIwIDgwIDUwIDUwUzgwIDIwIDgwIDIwUzgwIDIwIDUwIDUwUzIwIDgwIDIwIDgwWiIgZmlsbD0iI0ZGRDcwMCIvPgo8L3N2Zz4KPHN2ZyB4PSIxNTAiIHk9IjI1MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMzAiIGZpbGw9IiNGRkE1MDAiLz4KPHN2ZyB4PSIzMDAiIHk9IjEwMCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIpIiByeD0iMTAiLz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM4QjQ1MTMiLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRDI2OTFFIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHN2Zz4=" alt="Traditional Crafts Workshop">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title fade-in">Training Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card fade-in">
+                    <div class="program-image">🧺</div>
+                    <div class="program-content">
+                        <h3>Traditional Basket Weaving</h3>
+                        <p>Learn the ancient art of Ethiopian basket weaving using natural materials like palm fronds, straw, and colorful threads. Master traditional patterns and techniques.</p>
+                        <div class="program-details">
+                            <span class="duration">5 Days</span>
+                            <span class="price">$280</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-image">☕</div>
+                    <div class="program-content">
+                        <h3>Ethiopian Coffee Ceremony</h3>
+                        <p>Discover the sacred ritual of Ethiopian coffee ceremony, from roasting to serving. Learn cultural significance and traditional preparation methods.</p>
+                        <div class="program-details">
+                            <span class="duration">3 Days</span>
+                            <span class="price">$180</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-image">🎨</div>
+                    <div class="program-content">
+                        <h3>Traditional Textile Arts</h3>
+                        <p>Explore Ethiopian textile traditions including handwoven fabrics, natural dyeing techniques, and traditional embroidery patterns.</p>
+                        <div class="program-details">
+                            <span class="duration">7 Days</span>
+                            <span class="price">$420</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-image">🏺</div>
+                    <div class="program-content">
+                        <h3>Pottery & Clay Arts</h3>
+                        <p>Master traditional Ethiopian pottery techniques, from clay preparation to firing. Create authentic vessels used in daily life and ceremonies.</p>
+                        <div class="program-details">
+                            <span class="duration">6 Days</span>
+                            <span class="price">$350</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-image">🍲</div>
+                    <div class="program-content">
+                        <h3>Culinary Heritage</h3>
+                        <p>Learn to prepare traditional Ethiopian dishes, understand spice combinations, and discover the cultural stories behind each recipe.</p>
+                        <div class="program-details">
+                            <span class="duration">4 Days</span>
+                            <span class="price">$220</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-image">📚</div>
+                    <div class="program-content">
+                        <h3>Cultural Immersion Program</h3>
+                        <p>Comprehensive program combining all traditional arts, cultural history, language basics, and community engagement activities.</p>
+                        <div class="program-details">
+                            <span class="duration">14 Days</span>
+                            <span class="price">$980</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Beit-El Tibeb</h2>
+            <div class="features-grid">
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">👥</div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from master craftspeople who carry generations of traditional knowledge and authentic techniques.</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Authentic Experience</h3>
+                    <p>Immerse yourself in genuine cultural practices in an environment that honors tradition and heritage.</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Small Groups</h3>
+                    <p>Personalized attention with maximum 8 participants per workshop ensures quality learning and individual guidance.</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">📜</div>
+                    <h3>Certification</h3>
+                    <p>Receive official certificates recognizing your skills in traditional Ethiopian arts and crafts.</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Cultural Bridge</h3>
+                    <p>Connect with a global community passionate about preserving and celebrating Ethiopian heritage.</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Welcoming Environment</h3>
+                    <p>Experience Ethiopian hospitality in a warm, inclusive space designed for learning and cultural exchange.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form fade-in">
+                    <h3>Register for Programs</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="program">Interested Program</label>
+                            <select id="program" name="program" required>
+                                <option value="">Select a Program</option>
+                                <option value="basket-weaving">Traditional Basket Weaving</option>
+                                <option value="coffee-ceremony">Ethiopian Coffee Ceremony</option>
+                                <option value="textile-arts">Traditional Textile Arts</option>
+                                <option value="pottery">Pottery & Clay Arts</option>
+                                <option value="culinary">Culinary Heritage</option>
+                                <option value="immersion">Cultural Immersion Program</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your interests and goals..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Application</button>
+                    </form>
+                </div>
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Cultural District<br>Heritage Center Building<br>Jerusalem, Israel</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+972-52-609-1347</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@beiteltaba.org</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Sunday - Thursday: 9AM - 6PM<br>Friday: 9AM - 2PM<br>Saturday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Beit-El Tibeb Cultural Training Institute. Preserving Heritage, Inspiring Futures.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you soon to discuss your application.');
+        });
+    </script>
+    <script>
+        const images = document.querySelectorAll('.food-slideshow img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 3000); // Change image every 3 seconds
+    </script>
+
+<!-- Google Translate Element -->
+<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en', // Default page language
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      },
+      'google_translate_element'
+    );
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+   <section id="social-media" class="social-media">
+    <h1>Follow Us</h1>
+    <p>Stay connected with Sina Cafe! Follow us on social media for updates, special offers, and more delicious content.</p>
+
+    <div class="social-links">
+        <a href="https://www.facebook.com/" target="_blank" class="social-link facebook">
+            <span class="icon">📘</span>
+            <span>Like us on Facebook</span>
+        </a>
+
+        <a href="https://www.instagram.com/" target="_blank" class="social-link instagram">
+            <span class="icon">📷</span>
+            <span>Follow us on Instagram</span>
+        </a>
+
+        <a href="https://www.twitter.com/" target="_blank" class="social-link twitter">
+            <span class="icon">🐦</span>
+            <span>Follow us on Twitter</span>
+        </a>
+
+        <a href="https://www.tiktok.com/" target="_blank" class="social-link tiktok">
+            <span class="icon">🎵</span>
+            <span>Follow us on TikTok</span>
+        </a>
+    </div>
+</section>
+
+<style>
+.social-media {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.social-media h1 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.social-media p {
+    margin-bottom: 30px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 180px;
+    justify-content: center;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.social-link.facebook {
+    background-color: #1877f2;
+    color: white;
+}
+
+.social-link.instagram {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    color: white;
+}
+
+.social-link.twitter {
+    background-color: #1da1f2;
+    color: white;
+}
+
+.social-link.tiktok {
+    background-color: #000;
+    color: white;
+}
+
+.social-link .icon {
+    font-size: 20px;
+}
+
+.social-link span:last-child {
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-link {
+        width: 250px;
+    }
+}
+</style>
+
+<script>
+    // Handle customer comments
+    const commentForm = document.getElementById('submit-comment');
+    const commentList = document.getElementById('comments-display');
+
+    commentForm.addEventListener('click', function () {
+        const nameInput = document.getElementById('customer-name');
+        const commentInput = document.getElementById('customer-comment');
+
+        // Validate inputs
+        const name = nameInput.value.trim();
+        const comment = commentInput.value.trim();
+        if (!name || !comment) {
+            alert('Please fill out both fields.');
+            return;
+        }
+
+        // Create a new comment item
+        const newComment = document.createElement('li');
+        newComment.innerHTML = `<h4>${name}</h4><p>${comment}</p>`;
+
+        // Add the comment to the list
+        commentList.appendChild(newComment);
+
+        // Clear the input fields
+        nameInput.value = '';
+        commentInput.value = '';
+    });
+</script>
+
+<!-- Add a new audio element -->
+<audio id="notification-sound" src="{{ url_for('static', filename='sounds/notification.mp3') }}" preload="auto"></audio>
+
+<script>
+    // Check if the reservation flash message is displayed and play sound
+    document.addEventListener('DOMContentLoaded', function () {
+        // Check if the flash message is 'success'
+        const flashMessage = document.querySelector('.flash.success');
+        if (flashMessage) {
+            const notificationSound = document.getElementById('notification-sound');
+            notificationSound.play();  // Play sound
+        }
+    });
+</script>
+
+<script>
+    // Dynamically set the current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.banner-slide');
+    let currentSlide = 0;
+
+    function showNextSlide() {
+        // Hide current slide
+        slides[currentSlide].classList.remove('active');
+
+        // Move to next
+        currentSlide = (currentSlide + 1) % slides.length;
+        const nextSlide = slides[currentSlide];
+        nextSlide.classList.add('active');
+
+        // Check if next slide is a video
+        const video = nextSlide.querySelector('video');
+
+        if (video) {
+            video.currentTime = 0; // Restart video
+            video.play();
+
+            // Wait for the video to finish before moving to next slide
+            video.onended = () => {
+                showNextSlide();
+            };
+        } else {
+            // If image, wait 4 seconds
+            setTimeout(showNextSlide, 4000);
+        }
+    }
+
+    // Start first slide
+    slides[currentSlide].classList.add('active');
+
+    // Delay based on content
+    const firstVideo = slides[currentSlide].querySelector('video');
+    if (firstVideo) {
+        firstVideo.play();
+        firstVideo.onended = () => showNextSlide();
+    } else {
+        setTimeout(showNextSlide, 4000);
+    }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.banner-slide');
+    let currentSlide = 0;
+
+    function showNextSlide() {
+        // Hide current slide
+        slides[currentSlide].classList.remove('active');
+
+        // Move to next
+        currentSlide = (currentSlide + 1) % slides.length;
+        const nextSlide = slides[currentSlide];
+        nextSlide.classList.add('active');
+
+        // Check if next slide is a video
+        const video = nextSlide.querySelector('video');
+
+        if (video) {
+            video.currentTime = 0; // Restart video
+            video.play();
+
+            // Wait for the video to finish before moving to next slide
+            video.onended = () => {
+                showNextSlide();
+            };
+        } else {
+            // If image, wait 4 seconds
+            setTimeout(showNextSlide, 4000);
+        }
+    }
+
+    // Start first slide
+    slides[currentSlide].classList.add('active');
+
+    // Delay based on content
+    const firstVideo = slides[currentSlide].querySelector('video');
+    if (firstVideo) {
+        firstVideo.play();
+        firstVideo.onended = () => showNextSlide();
+    } else {
+        setTimeout(showNextSlide, 4000);
+    }
+});
+</script>
+   <script>
+        const images = document.querySelectorAll('.food-slideshow img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 3000); // Change image every 3 seconds
+    </script>
+<!-- Add this footer or section in your index.html -->
+<footer style="text-align: center; margin-top: 20px;">
+    <p>Founder, CEO  Asmamaw Yehun (Ph.D and Certified Software Engineer</p>
+    <p>email: chanieasmamaw@yahoo.com, +4917625315666</p>
+    <a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank">https://www.linkedin.com/in/asmamaw-chanie-yehun</a>
+</footer>
+<footer style="text-align: center; margin-top: 20px; padding: 10px; background-color: #f8f9fa; border-top: 1px solid #ddd;">
+   </footer>
+
+</body>
+</html>
