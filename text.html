@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Logo Layout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        /* Method 1: Flexbox Header */
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .center-content {
+            text-align: center;
+        }
+
+        .center-content h1 {
+            margin: 0;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Method 2: Grid Layout */
+        .header-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .logo-left {
+            justify-self: start;
+        }
+
+        .logo-right {
+            justify-self: end;
+        }
+
+        /* Method 3: Absolute Positioning */
+        .header-absolute {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            color: white;
+            border-radius: 8px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-absolute-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .logo-absolute-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Method 4: Float Layout */
+        .header-float {
+            padding: 20px;
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .logo-float-left {
+            float: left;
+        }
+
+        .logo-float-right {
+            float: right;
+        }
+
+        .float-content {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Placeholder logos */
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .logo-left, .logo-right {
+                justify-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="section">
+        <h2>Method 1: Flexbox Layout</h2>
+        <div class="header-flex">
+            <div class="logo-placeholder">L1</div>
+            <div class="center-content">
+                <h1>Your Website Title</h1>
+                <p>Flexbox makes alignment easy</p>
+            </div>
+            <div class="logo-placeholder">L2</div>
+        </div>
+        <p><strong>Code:</strong></p>
+<pre><code>&lt;div class="header-flex"&gt;
+    &lt;img src="logo1.png" alt="Logo 1" class="logo"&gt;
+    &lt;div class="center-content"&gt;
+        &lt;h1&gt;Your Website Title&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;img src="logo2.png" alt="Logo 2" class="logo"&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Method 2: CSS Grid Layout</h2>
+        <div class="header-grid">
+            <div class="logo-placeholder logo-left">L1</div>
+            <div class="center-content">
+                <h1>Grid Layout</h1>
+                <p>Perfect for structured layouts</p>
+            </div>
+            <div class="logo-placeholder logo-right">L2</div>
+        </div>
+        <p><strong>Code:</strong></p>
+<pre><code>&lt;div class="header-grid"&gt;
+    &lt;img src="logo1.png" alt="Logo 1" class="logo-left"&gt;
+    &lt;div class="center-content"&gt;
+        &lt;h1&gt;Grid Layout&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;img src="logo2.png" alt="Logo 2" class="logo-right"&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Method 3: Absolute Positioning</h2>
+        <div class="header-absolute">
+            <div class="logo-placeholder logo-absolute-left">L1</div>
+            <div class="center-content">
+                <h1>Absolute Positioning</h1>
+                <p>Precise control over placement</p>
+            </div>
+            <div class="logo-placeholder logo-absolute-right">L2</div>
+        </div>
+        <p><strong>Code:</strong></p>
+<pre><code>&lt;div class="header-absolute"&gt;
+    &lt;img src="logo1.png" alt="Logo 1" class="logo-absolute-left"&gt;
+    &lt;div class="center-content"&gt;
+        &lt;h1&gt;Absolute Positioning&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;img src="logo2.png" alt="Logo 2" class="logo-absolute-right"&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Method 4: Float Layout</h2>
+        <div class="header-float">
+            <div class="logo-placeholder logo-float-left">L1</div>
+            <div class="logo-placeholder logo-float-right">L2</div>
+            <div class="float-content">
+                <h1>Float Layout</h1>
+                <p>Traditional approach</p>
+            </div>
+        </div>
+        <p><strong>Code:</strong></p>
+<pre><code>&lt;div class="header-float"&gt;
+    &lt;img src="logo1.png" alt="Logo 1" class="logo-float-left"&gt;
+    &lt;img src="logo2.png" alt="Logo 2" class="logo-float-right"&gt;
+    &lt;div class="float-content"&gt;
+        &lt;h1&gt;Float Layout&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Key Points:</h2>
+        <ul>
+            <li><strong>Flexbox (Method 1):</strong> Most flexible and modern approach, great for responsive design</li>
+            <li><strong>Grid (Method 2):</strong> Excellent for structured layouts with precise control</li>
+            <li><strong>Absolute Positioning (Method 3):</strong> Good for overlays and precise positioning</li>
+            <li><strong>Float (Method 4):</strong> Traditional method, still works but less flexible</li>
+        </ul>
+        <p><strong>Recommendation:</strong> Use flexbox for most scenarios as it's the most versatile and responsive-friendly approach.</p>
+    </div>
+
+    <footer style="text-align:center; margin-top:40px; color:#555;">
+        &copy; 2025 Your Company Name. All rights reserved.
+    </footer>
+
+</body>
+</html>

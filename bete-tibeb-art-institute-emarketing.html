@@ -5,27 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beit-El Tibeb - Cultural Training Institute</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
         }
+.sales-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.sale {
+  background-color: #FFF9DB;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.sale img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.sale .price {
+  color: #444;
+  font-weight: bold;
+  display: block;
+  margin-top: 5px;
+}
+
+       /* Sales Section */
+        .sales-section {
+            background: rgba(77, 36, 36, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .sales-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .sales-section h2 {
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .sales-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+ .sales-section, .exhibition-section {
+                padding: 25px;
+            }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #F4A460 100%);
-            display: flex;
-            align-items: center;
+           align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: #FFD700;
             position: relative;
             overflow: hidden;
         }
@@ -43,7 +106,7 @@
 
         .hero-content {
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             padding: 0 20px;
             animation: fadeInUp 1s ease-out;
         }
@@ -52,7 +115,7 @@
             font-size: 4rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            background: linear-gradient(45deg, #FFD700, #FFA500);
+            background: linear-gradient(45deg, #FFD700, #FFD700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -67,8 +130,8 @@
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background: linear-gradient(45deg, #FF6B35, #F7931E);
-            color: white;
+           background: rgba(77, 36, 36, 0.95);
+            color: #FFD700;
             text-decoration: none;
             border-radius: 50px;
             font-size: 1.2rem;
@@ -87,7 +150,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(139, 69, 19, 0.95);
+            background: rgba(52, 31, 83, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -109,17 +172,24 @@
         }
 
         .logo {
-            font-size: 1.8rem;
             font-weight: bold;
-            color: #FFD700;
+            color: #00CED1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-right {
+            font-weight: bold;
+            color: #00CED1;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .logo-image {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #FFD700;
@@ -141,32 +211,46 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1rem;
+            flex: 1;
+            justify-content: center;
         }
 
         .nav-menu a {
-            color: white;
+            color: #FFD700;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .nav-menu a:hover {
             color: #FFD700;
         }
 
-        /* Enhanced Slideshow Styles */
-        .advertising-section {
-            padding: 2rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #F5F5DC 0%, #FFF8DC 100%);
-        }
+/* Container Styles */
+.advertising-section {
+    padding: 2rem 0;
+    max-width: 1800px;
+    margin: 0 auto;
+    height: 900px;
+    background: linear-gradient(135deg, #F5F5DC 0%, #FFF8DC 100%);
+}
+
+/* Image Styles - FULL IMAGE VISIBLE */
+.advertising-section img {
+    width: 100%;
+    max-width: 100%;
+    height: 200vh;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
 
         .section-title {
             text-align: center;
             font-size: 3rem;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             color: #8B4513;
             position: relative;
         }
@@ -185,7 +269,7 @@
             position: relative;
             max-width: 100%;
             margin: auto;
-            background: white;
+            background: #FFF9DB;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -199,24 +283,23 @@
             border-radius: 20px;
         }
 
-        .banner-slide {
-            display: none;
-            position: relative;
-            width: 100%;
-            height: 500px;
-            animation: slideIn 0.5s ease-in-out;
-        }
-
+.banner-slide {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    animation: slideIn 0.5s ease-in-out;
+}
         .banner-slide.active {
             display: block;
         }
 
-        .banner-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-        }
+       .banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* This keeps the image proportions and shows it completely */
+    object-position: center;
+}
 
         .banner-slide video {
             width: 100%;
@@ -263,7 +346,7 @@
         .slide-indicators {
             text-align: center;
             padding: 20px 0;
-            background: white;
+            background: #FFF9DB;
         }
 
         .indicator {
@@ -293,7 +376,7 @@
             top: 20px;
             right: 20px;
             background: rgba(0,0,0,0.7);
-            color: white;
+            color: #FFF9DB;
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 14px;
@@ -307,7 +390,7 @@
             left: 0;
             right: 0;
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
+            color: #FFF9DB;
             padding: 40px 20px 20px;
             text-align: center;
         }
@@ -342,7 +425,7 @@
         }
 
         .team-member-card {
-            background: white;
+            background: #FFF9DB;
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
@@ -366,7 +449,7 @@
             justify-content: center;
             font-size: 2rem;
             font-weight: bold;
-            color: white;
+            color: #FFF9DB;
             margin: 0 auto 1rem;
         }
 
@@ -460,7 +543,7 @@
         }
 
         .program-card {
-            background: white;
+            background: #FFF9DB;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
@@ -490,7 +573,7 @@
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            color: white;
+            color: #FFF9DB;
         }
 
         .program-content {
@@ -546,7 +629,7 @@
         }
 
         .feature-item {
-            background: white;
+            background: #FFF9DB;
             padding: 2rem;
             border-radius: 20px;
             text-align: center;
@@ -588,7 +671,7 @@
         }
 
         .contact-form {
-            background: white;
+            background: #FFF9DB;
             padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
@@ -630,7 +713,7 @@
 
         .submit-btn {
             background: linear-gradient(45deg, #FF6B35, #F7931E);
-            color: white;
+            color: #FFF9DB;
             padding: 15px 30px;
             border: none;
             border-radius: 50px;
@@ -657,7 +740,7 @@
             align-items: center;
             gap: 1rem;
             padding: 1.5rem;
-            background: white;
+            background: #FFF9DB;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
@@ -674,7 +757,7 @@
 
         .contact-item p {
             color: #666;
-            margin: 0;
+            margin: 20;
         }
 
         /* Social Media Section */
@@ -707,36 +790,42 @@
             align-items: center;
             gap: 10px;
             padding: 12px 20px;
+            background: #fff;
+            color: #8B4513;
+            border-radius: 30px;
             text-decoration: none;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             min-width: 180px;
             justify-content: center;
         }
 
         .social-link:hover {
+            background: #FF6B35;
+            color: #FFF9DB;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .social-link.facebook {
             background-color: #1877f2;
-            color: white;
+            color: #FFF9DB;
         }
 
         .social-link.instagram {
             background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-            color: white;
+            color: #FFF9DB;
         }
 
         .social-link.twitter {
             background-color: #1da1f2;
-            color: white;
+            color: #FFF9DB;
         }
 
         .social-link.tiktok {
             background-color: #000;
-            color: white;
+            color: #FFF9DB;
         }
 
         .social-link .icon {
@@ -750,7 +839,7 @@
         /* Footer */
         footer {
             background: #8B4513;
-            color: white;
+            color: #FFF9DB;
             text-align: center;
             padding: 3rem 0;
         }
@@ -860,6 +949,49 @@
                 width: 250px;
             }
         }
+
+        .team-member-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem auto;
+    display: block;
+    border: 3px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-member-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-member-card:hover .team-member-image {
+    border-color: #007bff;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.team-member-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.team-member-card .role {
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+
     </style>
 </head>
 <body>
@@ -867,10 +999,10 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="../static/img/22.jpeg" alt="Beit-El Tibeb Logo" class="logo-image">
-                <div class="logo-icon">B</div>
-                <span>Beite-Tibeb (Wisdom)</span>
+                <img src="../static/img/L1.jpeg" alt="Beit-El Tibeb Logo" class="logo-image">
+
             </div>
+
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -878,10 +1010,15 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#team">Team</a></li>
+                <li><a href="#sales">Art and Product Marketplaces</a></li>
+                <li><a href="#exhibitions">Exhibitions</a></li>
             </ul>
+
+            <div class="logo-right">
+                <img src="../static/img/22-resized.jpg" alt="Beit-El Tibeb Logo" class="logo-image">
+            </div>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
@@ -891,113 +1028,128 @@
         </div>
     </section>
 
-    <!-- Advertising Section with Slideshow -->
-    <section id="advertising" class="advertising-section">
-        <div class="container">
-            <h2 class="section-title">Workshops Overviews</h2>
+  <!-- Advertising Section with Slideshow -->
+<section id="advertising" class="advertising-section">
+    <div class="container">
+        <h2 class="section-title">Workshops Overviews</h2>
 
-            <div class="rotating-banner">
-                <div class="banner-slide active">
-                    <img src="../static/img/1.jpeg" alt="Workshop 1">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/2.jpeg" alt="Workshop 2">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/3.jpeg" alt="Workshop 3">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/4.jpeg" alt="Workshop 4">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/5.jpeg" alt="Workshop 5">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/6.jpeg" alt="Workshop 6">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/7.jpeg" alt="Workshop 7">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/8.jpeg" alt="Workshop 8">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/9.jpeg" alt="Workshop 9">
-                </div>
-                <div class="banner-slide">
-                    <img src="../static/img/10.jpeg" alt="Workshop 10">
-                </div>
+        <div class="rotating-banner">
+            <div class="banner-slide active">
+                <img src="../static/img/24-resized.jpg" alt="Workshop 24">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/25-resized.jpg" alt="Workshop 25">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/26-resized.jpg" alt="Workshop 26">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/27-resized.jpg" alt="Workshop 27">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/28-resized.jpg" alt="Workshop 28">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/29-resized.jpg" alt="Workshop 29">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/30-resized.jpg" alt="Workshop 30">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/31-resized.jpg" alt="Workshop 31">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/32-resized.jpg" alt="Workshop 32">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/33-resized.jpg" alt="Workshop 33">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/34-resized.jpg" alt="Workshop 34">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/02-resized.jpg" alt="Workshop 02">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/03-resized.jpg" alt="Workshop 03">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/014_3.jpeg" alt="Workshop 014_03">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/014_4.jpeg" alt="Workshop 014_4">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/04-resized.jpg" alt="Workshop 04">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/05-resized.jpg" alt="Workshop 05">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/06-resized.jpg" alt="Workshop 06">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/07-resized.jpg" alt="Workshop 07">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/08-resized.jpg" alt="Workshop 08">
+            </div>
+            <div class="banner-slide">
+                <img src="../static/img/09-resized.jpg" alt="Workshop 09">
+            </div>
+                        <div class="banner-slide">
+                <img src="../static/img/014_2.jpeg" alt="Workshop 014_2">
+            </div>
+                        <div class="banner-slide">
+                <img src="../static/img/014_1.jpeg" alt="Workshop 014_1">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Team Section -->
-    <section id="team" class="team-section">
-        <div class="team-container">
-            <h2 class="section-title fade-in">Our Team Leaders</h2>
-            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 2rem;">
-                Meet the passionate experts behind Beit-El Tibeb Cultural Training Institute
-            </p>
+<!-- Team Section -->
+<section id="team" class="team-section">
+    <div class="team-container">
+        <h2 class="section-title fade-in">Our Team Leaders</h2>
+        <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 2rem;">
+            Meet the passionate experts Bethe-EL Tibeb Art and Cultural Training Institute
+        </p>
 
-            <div class="team-grid">
-                <!-- Asmamaw Yehun -->
-                <div class="team-member-card fade-in">
-                    <div class="team-avatar">AC</div>
-                    <h3>Asmamaw Yehun</h3>
-                    <p class="role">Founder, CEO & Software Administrator</p>
-                    <p class="credentials">PhD in Physics, Certified Software Engineer</p>
-                    <p class="click-hint"><a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank">LinkedIn Profile</a></p>
-                    <p>Founder, CEO & Software Administrator with PhD in Physics and Certified Software Engineer credentials. I bring extensive leadership and technical expertise to Beit-El Tibeb. As founder and general manager, I oversee the technological infrastructure and strategic direction of our cultural institute.</p>
-                </div>
-
-                <!-- Elsabet Belayneh -->
-                <div class="team-member-card fade-in">
-                    <div class="team-avatar">EB</div>
-                    <h3>Elsabet Belayneh</h3>
-                    <p class="role">Founder & Cultural Heritage Director</p>
-                    <p class="credentials">BSc in Fine Arts, Cultural Studies Specialist</p>
-                    <p class="click-hint"><a href="https://www.linkedin.com/" target="_blank">LinkedIn Profile</a></p>
-                    <p>As co-founder and cultural heritage director, I bring deep expertise in Ethiopian-Israeli traditions, arts, and cultural practices. My role centers on preserving authentic cultural knowledge and training the next generation of cultural ambassadors.</p>
-                </div>
-
-                <!-- XX YY -->
-                <div class="team-member-card fade-in">
-                    <div class="team-avatar">XY</div>
-                    <h3>XX YY</h3>
-                    <p class="role">Finance & Registration Administrator</p>
-                    <p class="credentials">MBA in Finance, Administrative Management Specialist</p>
-                    <p class="click-hint"><a href="https://www.linkedin.com/" target="_blank">LinkedIn Profile</a></p>
-                    <p>I oversee all financial operations and student registration processes at Beit-El Tibeb. My role ensures smooth administrative functions while maintaining the highest standards of financial transparency and accountability.</p>
-                </div>
+        <div class="team-grid">
+            <!-- Asmamaw Yehun -->
+            <div class="team-member-card fade-in">
+                <img src="../static/img/T11.jpeg" alt="Asmamaw Yehun" class="team-member-image">
+                <h3>Asmamaw Yehun</h3>
+                <p class="role">Business Partner | IT Manager | Technology Innovation<br>
+                PhD | Certified Software Engineer</p>
+                <p>My role is to leverage advanced technology solutions and strategic partnerships to drive business growth and innovation. As an IT Manager, I oversee technical infrastructure and lead development teams to deliver cutting-edge software solutions.</p>
+                <p class="click-hint"><a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank">LinkedIn Profile</a></p>
             </div>
 
-            <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                <h3 style="color: #8B4513; margin-bottom: 1rem;">Why Choose Beit-El Tibeb</h3>
-                <p style="color: #666; font-size: 1.1rem; line-height: 1.8;">
-                    We combine cultural authenticity, expert leadership, and innovative educational methods to preserve and share the richness of Ethiopian-Israeli heritage. Our programs are designed to empower individuals with traditional knowledge while using modern platforms to reach and unite our community worldwide.
-                </p>
+            <!-- Elsabet Tegegney -->
+            <div class="team-member-card fade-in">
+                <img src="../static/img/T1.jpeg" alt="Elsabet Tegegney" class="team-member-image">
+                <h3>Elsabet Tegegney</h3>
+                <p class="role">Founder & Cultural Heritage General Manager and Director of the Institute</p>
+                <p>I bring deep expertise in Ethiopian-Israeli traditions, arts, and cultural practices. My role centers on preserving authentic cultural knowledge and training the next generation of cultural ambassadors.</p>
+                <p>Master of Arts - MA, Visual Literacy in Art, Seminar Hakibbutzim College, Israel<br>
+                Bachelor's degree, Multidisciplinary and Creative Art, University of Haifa, Israel</p>
+                <p class="click-hint"><a href="https://www.linkedin.com/in/elsa-tegegney-0a8855226/?trk=contact-info" target="_blank">LinkedIn Profile</a></p>
+            </div>
+
+            <!-- Elsa Gesesewu Gedamu -->
+            <div class="team-member-card fade-in">
+                <img src="../static/img/T3.jpeg" alt="Elsa Gesesewu Gedamu" class="team-member-image">
+                <h3>Elsa Gesesewu Gedamu</h3>
+                <p class="role">Co-Founder & Cultural Heritage Institute</p>
+                <p>Business Partner and cultural heritage expert. My role centers on preserving authentic cultural knowledge and training as a professional expert.</p>
+                <p>Master of Arts - MA, Visual Literacy and Curatorship, Seminar Hakibbutzim College<br>
+                Studied at University of Haifa</p>
+                <p class="click-hint"><a href="https://www.facebook.com/elsa.gedamu" target="_blank">Facebook Profile</a></p>
             </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title fade-in">About Our Institute</h2>
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <p>Beit-El Tibeb is a global center dedicated to empowering Ethiopian-Israeli culture, heritage, and art. We serve as a living bridge between worlds, offering authentic experiences through traditional crafts, culinary arts, and cultural workshops.</p>
-                    <br>
-                    <p>Our institute preserves the true roots of Beta Israel culture while fostering connections between generations, building cultural pride, and inspiring all who encounter our rich traditions.</p>
-                    <br>
-                    <p>Join us in this journey of cultural preservation and artistic excellence, where every workshop tells a story and every creation carries the wisdom of our ancestors.</p>
-                </div>
-                <div class="about-image fade-in">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDUwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iNDAwIiBmaWxsPSJ1cmwoI2dyYWQpIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjIwMCIgcj0iMTAwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMykiLz4KPHN2ZyB4PSIyMDAiIHk9IjE1MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPgo8cGF0aCBkPSJNMjAgODBDMjAgODBTIDIwIDgwIDUwIDUwUzgwIDIwIDgwIDIwUzgwIDIwIDUwIDUwUzIwIDgwIDIwIDgwWiIgZmlsbD0iI0ZGRDcwMCIvPgo8L3N2Zz4KPHN2ZyB4PSIxNTAiIHk9IjI1MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIj4KPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMzAiIGZpbGw9IiNGRkE1MDAiLz4KPHN2ZyB4PSIzMDAiIHk9IjEwMCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIpIiByeD0iMTAiLz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPHN2Zz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM4QjQ1MTMiLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRDI2OTFFIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHN2Zz4=" alt="Traditional Crafts Workshop">
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- Programs Section -->
     <section id="programs" class="programs">
@@ -1078,6 +1230,102 @@
             </div>
         </div>
     </section>
+ <!-- Main Content -->
+<div class="main-content">
+    <!-- Sales Section -->
+    <section id="sales" class="sales-section">
+        <h2>Art product and Bethel Ethiopian Organic Coffee for Sales</h2>
+
+        <div class="sales-grid">
+            <div class="sale">
+                <img src="../static/img/014-resized.jpg" alt="Art product 1">
+                <div class="sale-icon"></div>
+                <span>Bethel Organic Ethiopian Coffee</span>
+                <span class="price">$20</span>
+            </div>
+            <div class="sale">
+                <img src="../static/img/29-resized.jpg" alt="Art product 2">
+                <div class="sale-icon"></div>
+                <span>Art product and Bethel art products</span>
+                <span class="price">Negotiable, depends on the design</span>
+            </div>
+            <div class="sale">
+                <img src="../static/img/09-resized.jpg" alt="Art product 3">
+                <div class="sale-icon"></div>
+                <span>Art product and Bethel art products</span>
+                <span class="price">Negotiable, depends on the design</span>
+            </div>
+            <div class="sale">
+                <img src="../static/img/01-resized.jpg" alt="Art product 4">
+                <div class="sale-icon"></div>
+                <span>Art product and Bethel art products</span>
+                <span class="price">Negotiable, depends on the design</span>
+            </div>
+            <div class="sale">
+                <img src="../static/img/19-resized.jpg" alt="Art product 5">
+                <div class="sale-icon"></div>
+                <span>Art product and Bethel art products</span>
+                <span class="price">Negotiable, depends on the design</span>
+            </div>
+                        <div class="sale">
+                <img src="../static/img/35-resized.jpg" alt="Art product 5">
+                <div class="sale-icon"></div>
+                <span>Art product and Bethel art products</span>
+                <span class="price">Negotiable, depends on the design</span>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+            <!-- Exhibition Section -->
+            <section id="exhibitions" class="exhibition-section">
+                <h2>Exhibitions</h2>
+
+                <div class="exhibition-card">
+                    <div class="exhibition-title">Contemporary Ethiopian Art</div>
+                    <div class="exhibition-date">March 15 - April 30, 2025</div>
+                    <div class="exhibition-description">
+                        Explore the vibrant world of contemporary Ethiopian art featuring works from emerging and established artists.
+                    </div>
+                    <button class="register-btn">Register Interest</button>
+                </div>
+
+                <div class="exhibition-card">
+                    <div class="exhibition-title">Traditional Meets Modern</div>
+                    <div class="exhibition-date">May 10 - June 25, 2025</div>
+                    <div class="exhibition-description">
+                        A unique collection showcasing the fusion of traditional Ethiopian artistic techniques with modern expressions.
+                    </div>
+                    <button class="register-btn">Register Interest</button>
+                </div>
+
+                <div class="exhibition-card">
+                    <div class="exhibition-title">Student Showcase</div>
+                    <div class="exhibition-date">July 1 - July 31, 2025</div>
+                    <div class="exhibition-description">
+                        Celebrating the talent of our students with a comprehensive display of their finest works.
+                    </div>
+                    <button class="register-btn">Register Interest</button>
+                </div>
+
+                <!-- Custom Exhibition Code Section -->
+                <div class="custom-code-section" id="custom-exhibitions">
+                    <h3>🎪 Add Your Custom Exhibition Code Here</h3>
+                    <p>This section is reserved for your custom exhibition functionality, event management, booking systems, etc.</p>
+                    <!--
+                    YOUR CUSTOM EXHIBITION CODE GOES HERE
+                    Examples:
+                    - Event booking system
+                    - Virtual gallery tours
+                    - Artist submission forms
+                    - Exhibition calendar integration
+                    - Visitor registration system
+                    - Interactive exhibition maps
+                    -->
+                </div>
+            </section>
+        </div>
 
     <!-- Features Section -->
     <section id="features" class="features">
@@ -1274,7 +1522,7 @@
     <p>Stay connected with Sina Cafe! Follow us on social media for updates, special offers, and more delicious content.</p>
 
     <div class="social-links">
-        <a href="https://www.facebook.com/" target="_blank" class="social-link facebook">
+        <a href="https://www.facebook.com/priel322?rdid=dU9yBmCEAOJRu3LA&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Ay9obkm5G%2F" target="_blank" class="social-link facebook">
             <span class="icon">📘</span>
             <span>Like us on Facebook</span>
         </a>
@@ -1297,84 +1545,6 @@
 </section>
 
 <style>
-.social-media {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-}
-
-.social-media h1 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.social-media p {
-    margin-bottom: 30px;
-    color: #666;
-    line-height: 1.5;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-width: 180px;
-    justify-content: center;
-}
-
-.social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.social-link.facebook {
-    background-color: #1877f2;
-    color: white;
-}
-
-.social-link.instagram {
-    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-    color: white;
-}
-
-.social-link.twitter {
-    background-color: #1da1f2;
-    color: white;
-}
-
-.social-link.tiktok {
-    background-color: #000;
-    color: white;
-}
-
-.social-link .icon {
-    font-size: 20px;
-}
-
-.social-link span:last-child {
-    font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .social-links {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .social-link {
-        width: 250px;
-    }
 }
 </style>
 
@@ -1529,7 +1699,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </script>
 <!-- Add this footer or section in your index.html -->
 <footer style="text-align: center; margin-top: 20px;">
-    <p>Founder, CEO  Asmamaw Yehun (Ph.D and Certified Software Engineer</p>
+    <p>Web site developer: Asmamaw Yehun (Ph.D and Certified Software Engineer</p>
     <p>email: chanieasmamaw@yahoo.com, +4917625315666</p>
     <a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank">https://www.linkedin.com/in/asmamaw-chanie-yehun</a>
 </footer>
