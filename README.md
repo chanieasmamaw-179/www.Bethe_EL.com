@@ -206,3 +206,4 @@ The CSS expects the following HTML structure:
 ---
 
 **Note**: This CSS file provides the complete styling framework. JavaScript implementation is required for full functionality of interactive elements like the slideshow, mobile menu, and scroll effects.
+# www.Bethe_EL.com
