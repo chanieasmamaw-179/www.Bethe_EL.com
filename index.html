@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Beit-El Tibeb - Cultural Training Institute</title>
     <style>
 
@@ -504,12 +504,11 @@
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            background: #somecolor;
-        }
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
         .about-content {
             display: grid;
@@ -898,78 +897,78 @@
             opacity: 1;
             transform: translateY(0);
         }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+    .hero p {
+        font-size: 1.1rem;
+    }
 
-            .hero p {
-                font-size: 1.1rem;
-            }
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+    .nav-menu {
+        display: none;
+    }
 
-            .nav-menu {
-                display: none;
-            }
+    .section-title {
+        font-size: 2rem;
+    }
 
-            .section-title {
-                font-size: 2rem;
-            }
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
 
-            .programs-grid {
-                grid-template-columns: 1fr;
-            }
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
 
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
 
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+    .slide-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
 
-            .slide-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
+    .prev {
+        left: 10px;
+    }
 
-            .prev {
-                left: 10px;
-            }
+    .next {
+        right: 10px;
+    }
 
-            .next {
-                right: 10px;
-            }
+    .banner-slide {
+        height: 300px;
+    }
 
-            .banner-slide {
-                height: 300px;
-            }
+    .rotating-banner {
+        height: 300px;
+    }
 
-            .rotating-banner {
-                height: 300px;
-            }
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
 
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
+    .social-link {
+        width: 250px;
+    }
+}
 
-            .social-link {
-                width: 250px;
-            }
-        }
 
         .team-member-image {
     width: 80px;
