@@ -17,8 +17,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
-        }
-.sales-grid {
+        }.sales-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -31,6 +30,7 @@
   border: 1px solid #4a4a8a;
   border-radius: 10px;
   text-align: center;
+  color: white; /* <-- added */
 }
 
 .sale img {
@@ -47,53 +47,53 @@
   margin-top: 5px;
 }
 
-       /* Sales Section */
-        .sales-section {
-            background: linear-gradient(135deg, #1a1a3e 0%, #2d2d5f 50%, #3e3e7f 100%);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
+/* Sales Section */
+.sales-section {
+  background: linear-gradient(135deg, #1a1a3e 0%, #2d2d5f 50%, #3e3e7f 100%);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  color: white; /* <-- added */
+}
 
-        .sales-section:hover {
-            transform: translateY(-5px);
-        }
+.sales-section:hover {
+  transform: translateY(-5px);
+}
 
-        .sales-section h2 {
-            color: #e0e0ff;
-            margin-bottom: 30px;
-            font-size: 2rem;
-            text-align: center;
-            position: relative;
-        }
+.sales-section h2 {
+  color: white; /* <-- changed from 'about' which was invalid */
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+}
 
-        .sales-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(45deg, #6366f1, #8b5cf6);
-        }
+.sales-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(45deg, #6366f1, #8b5cf6);
+}
 
- .sales-section, .exhibition-section {
-                padding: 25px;
-            }
+.sales-section, .exhibition-section {
+  padding: 25px;
+}
 
-        /* Hero Section */
-        .hero {
-           align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #FFD700;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
-        }
+.hero {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFD700;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+}
 
         .hero::before {
             content: '';
@@ -152,7 +152,9 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(135deg, rgba(15,15,35,0.95) 0%, rgba(26,26,62,0.95) 100%);
+          background: linear-gradient(135deg, #FFD700 0%, #FFB700 50%, #FF8C00 100%);
+
+
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -220,6 +222,7 @@
 
         .nav-menu a {
             color: #e0e0ff;
+             color: #996515;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
@@ -227,7 +230,8 @@
         }
 
         .nav-menu a:hover {
-            color: #FFD700;
+            color: blue;
+
         }
 
 /* Container Styles */
@@ -253,7 +257,7 @@
             text-align: center;
             font-size: 3rem;
             margin-bottom: 3.5rem;
-            color: #e0e0ff;
+            color: #996515;
             position: relative;
         }
 
@@ -418,6 +422,12 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+.about-container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 20px;
+   color: white;
+}
 
         .team-grid {
             display: grid;
@@ -835,7 +845,7 @@
         }
 
         .social-link.tiktok {
-            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            background: linear-gradient(135deg, #F3EFF 0%, #333333 100%);
             color: #FFD700;
         }
 
@@ -1189,12 +1199,19 @@
         </div>
     </div>
 </section>
-
+<section id="about" class="about-section">
+    <div class="about-container">
+        <h2 class="section-title fade-in">About</h2>
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+            Beit-El Tibeb Art and Cultural Training Institute is a Jerusalem-based organization that preserves Ethiopian-Israeli heritage through authentic arts and crafts workshops. Led by cultural heritage experts, the institute offers hands-on training in traditional Ethiopian basket weaving, coffee ceremony, textile arts, pottery, and cooking. With small classes (maximum 8 participants) and master craftspeople as instructors, students receive personalized learning experiences and official certificates. Located in Jerusalem's Cultural District, Beit-El also sells Ethiopian organic coffee and handcrafted art products, supporting their mission to celebrate and sustain Ethiopian cultural traditions for future generations.
+        </p>
+    </div>
+</section>
 <!-- Team Section -->
 <section id="team" class="team-section">
     <div class="team-container">
         <h2 class="section-title fade-in">Our Team Leaders</h2>
-        <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 2rem;">
+        <p style="text-align: center; color: #FFD700; font-size: 1.1rem; margin-bottom: 2rem;">
             Meet the passionate experts Bethe-EL Tibeb Art and Cultural Training Institute
         </p>
 
@@ -1465,21 +1482,23 @@
                         <div class="contact-icon">📞</div>
                         <div>
                             <h4>Phone</h4>
-                            <p>+972-52-609-1347</p>
+                            <p>+972 526 091 347</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">📧</div>
                         <div>
                             <h4>Email</h4>
-                            <p>info@beiteltaba.org</p>
+                            <p>elsa32@walla.com</p>
+                            <p> or </p>
+                            <p>chanieasmamaw@yahoo.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">⏰</div>
                         <div>
                             <h4>Hours</h4>
-                            <p>Sunday - Thursday: 9AM - 6PM<br>Friday: 9AM - 2PM<br>Saturday: Closed</p>
+                            <p>Monday - Friday: 9AM - 6PM<br>Saturday and Sunday: Closed</p>
                         </div>
                     </div>
                 </div>
