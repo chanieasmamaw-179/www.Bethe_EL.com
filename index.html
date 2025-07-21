@@ -504,11 +504,12 @@
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
         }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background: #somecolor;
+        }
 
         .about-content {
             display: grid;
@@ -897,78 +898,78 @@
             opacity: 1;
             transform: translateY(0);
         }
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
 
-    .hero p {
-        font-size: 1.1rem;
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+            .hero p {
+                font-size: 1.1rem;
+            }
 
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
 
-    .nav-menu {
-        display: none;
-    }
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
 
-    .section-title {
-        font-size: 2rem;
-    }
+            .nav-menu {
+                display: none;
+            }
 
-    .programs-grid {
-        grid-template-columns: 1fr;
-    }
+            .section-title {
+                font-size: 2rem;
+            }
 
-    .team-grid {
-        grid-template-columns: 1fr;
-    }
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .slide-nav {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-    }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .prev {
-        left: 10px;
-    }
+            .slide-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
 
-    .next {
-        right: 10px;
-    }
+            .prev {
+                left: 10px;
+            }
 
-    .banner-slide {
-        height: 300px;
-    }
+            .next {
+                right: 10px;
+            }
 
-    .rotating-banner {
-        height: 300px;
-    }
+            .banner-slide {
+                height: 300px;
+            }
 
-    .social-links {
-        flex-direction: column;
-        align-items: center;
-    }
+            .rotating-banner {
+                height: 300px;
+            }
 
-    .social-link {
-        width: 250px;
-    }
-}
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
 
+            .social-link {
+                width: 250px;
+            }
+        }
 
         .team-member-image {
     width: 80px;
@@ -1085,6 +1086,7 @@
 
 
     </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -1229,7 +1231,7 @@
             <div class="team-member-card fade-in">
                 <img src="../static/img/T1.jpeg" alt="Elsabet Tegegney" class="team-member-image">
                 <h3>Elsabet Tegegney</h3>
-                <p class="role">Founder & Cultural Heritage General Manager and Director of the Institute</p>
+                <p class="role">Founder  Beit-El Tibeb  Ethiopian-Israeli heritage & Cultural Heritage General Manager and Director of the Institute</p>
                 <p>I bring deep expertise in Ethiopian-Israeli traditions, arts, and cultural practices. My role centers on preserving authentic cultural knowledge and training the next generation of cultural ambassadors.</p>
                 <p>Master of Arts - MA, Visual Literacy in Art, Seminar Hakibbutzim College, Israel<br>
                 Bachelor's degree, Multidisciplinary and Creative Art, University of Haifa, Israel</p>
@@ -1238,8 +1240,8 @@
 
             <!-- Elsa Gesesewu Gedamu -->
             <div class="team-member-card fade-in">
-                <img src="../static/img/T3.jpeg" alt="Elsa Gesesewu Gedamu" class="team-member-image">
-                <h3>Elsa Gesesewu Gedamu</h3>
+                <img src="../static/img/T3.jpeg" alt=" Artist Tesfaye Tegegn" class="team-member-image">
+                <h3>Artist Tesfaye Tegegn</h3>
                 <p class="role">Co-Founder & Cultural Heritage Institute</p>
                 <p>Business Partner and cultural heritage expert. My role centers on preserving authentic cultural knowledge and training as a professional expert.</p>
                 <p>Master of Arts - MA, Visual Literacy and Curatorship, Seminar Hakibbutzim College<br>
@@ -1336,12 +1338,16 @@
         <h2>Art product and Bethel Ethiopian Organic Coffee for Sales</h2>
 
         <div class="sales-grid">
-            <div class="sale">
-                <img src="../static/img/014-resized.jpg" alt="Art product 1">
-                <div class="sale-icon"></div>
-                <span>Bethel Organic Ethiopian Coffee</span>
-                <span class="price">$20</span>
-            </div>
+           <div class="sale">
+    <a href="../static/img/014-resized.jpg" data-lightbox="product1" data-title="Bethel Organic Ethiopian Coffee">
+        <img src="../static/img/014-resized.jpg" alt="Bethel Coffee">
+    </a>
+    <a href="../static/img/014-variant1.jpg" data-lightbox="product1" data-title="Bethel Coffee - Variant 1"></a>
+    <a href="../static/img/014-variant2.jpg" data-lightbox="product1" data-title="Bethel Coffee - Variant 2"></a>
+    <span>Bethel Organic Ethiopian Coffee</span>
+    <span class="price">$20</span>
+</div>
+
             <div class="sale">
                 <img src="../static/img/29-resized.jpg" alt="Art product 2">
                 <div class="sale-icon"></div>
@@ -1474,7 +1480,7 @@
                         <div class="contact-icon">📍</div>
                         <div>
                             <h4>Location</h4>
-                            <p>Cultural District<br>Heritage Center Building<br>Jerusalem, Israel</p>
+                            <p>Cultural District<br>Heritage Center Building<br>Javeny, Israel</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1807,6 +1813,6 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
     }
 });
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
 </html>

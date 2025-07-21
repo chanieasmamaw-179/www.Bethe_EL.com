@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .image-group {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .group-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .image-preview {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .preview-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .preview-img:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .view-all-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .view-all-btn:hover {
+            background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: 2% auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            animation: modalSlideIn 0.5s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff6b6b;
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .image-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .image-details {
+            padding: 15px;
+        }
+
+        .image-details h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .image-details p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .image-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .image-preview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-content {
+                max-width: 95%;
+                margin: 1% auto;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Gallery</h1>
+
+        <div class="gallery-grid">
+            <!-- Nature Group -->
+            <div class="image-group">
+                <h2 class="group-title">Nature & Landscapes</h2>
+                <div class="image-preview">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Mountain" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" alt="Forest" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Lake" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" alt="Sunset" class="preview-img">
+                </div>
+                <button class="view-all-btn" onclick="openModal('nature')">View All Nature Photos</button>
+            </div>
+
+            <!-- Urban Group -->
+            <div class="image-group">
+                <h2 class="group-title">Urban & Architecture</h2>
+                <div class="image-preview">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop" alt="City" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop" alt="Building" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop" alt="Street" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop" alt="Bridge" class="preview-img">
+                </div>
+                <button class="view-all-btn" onclick="openModal('urban')">View All Urban Photos</button>
+            </div>
+
+            <!-- Animals Group -->
+            <div class="image-group">
+                <h2 class="group-title">Wildlife & Animals</h2>
+                <div class="image-preview">
+                    <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=400&h=300&fit=crop" alt="Fox" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=400&h=300&fit=crop" alt="Bird" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=400&h=300&fit=crop" alt="Deer" class="preview-img">
+                    <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=400&h=300&fit=crop" alt="Eagle" class="preview-img">
+                </div>
+                <button class="view-all-btn" onclick="openModal('animals')">View All Animal Photos</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" class="modal-title">Image Gallery</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="modalImages" class="image-grid">
+                    <!-- Images will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image data for each group
+        const imageGroups = {
+            nature: {
+                title: "Nature & Landscapes Collection",
+                images: [
+                    {
+                        src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop",
+                        title: "Mountain Vista",
+                        description: "Breathtaking mountain landscape with snow-capped peaks.",
+                        location: "Swiss Alps",
+                        date: "2024-03-15"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop",
+                        title: "Forest Path",
+                        description: "Sunlight filtering through ancient forest trees.",
+                        location: "Pacific Northwest",
+                        date: "2024-02-20"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=400&fit=crop",
+                        title: "Crystal Lake",
+                        description: "Pristine mountain lake reflecting the sky.",
+                        location: "Canadian Rockies",
+                        date: "2024-01-10"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop",
+                        title: "Golden Sunset",
+                        description: "Dramatic sunset over rolling hills.",
+                        location: "Tuscany, Italy",
+                        date: "2024-04-05"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop",
+                        title: "Waterfall",
+                        description: "Powerful waterfall cascading down rocks.",
+                        location: "Iceland",
+                        date: "2024-03-28"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=400&fit=crop",
+                        title: "Desert Dunes",
+                        description: "Golden sand dunes under starlit sky.",
+                        location: "Sahara Desert",
+                        date: "2024-02-14"
+                    }
+                ]
+            },
+            urban: {
+                title: "Urban & Architecture Collection",
+                images: [
+                    {
+                        src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
+                        title: "City Skyline",
+                        description: "Modern city skyline at twilight.",
+                        location: "New York City",
+                        date: "2024-03-22"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop",
+                        title: "Modern Architecture",
+                        description: "Contemporary building with geometric design.",
+                        location: "Tokyo, Japan",
+                        date: "2024-01-18"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?w=600&h=400&fit=crop",
+                        title: "Street Art",
+                        description: "Vibrant mural on urban wall.",
+                        location: "Berlin, Germany",
+                        date: "2024-02-25"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
+                        title: "Night Lights",
+                        description: "City lights creating beautiful patterns.",
+                        location: "London, UK",
+                        date: "2024-04-01"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop",
+                        title: "Historic Bridge",
+                        description: "Iconic bridge spanning the river.",
+                        location: "San Francisco",
+                        date: "2024-03-12"
+                    }
+                ]
+            },
+            animals: {
+                title: "Wildlife & Animals Collection",
+                images: [
+                    {
+                        src: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=600&h=400&fit=crop",
+                        title: "Red Fox",
+                        description: "Beautiful red fox in its natural habitat.",
+                        location: "Canadian Forest",
+                        date: "2024-02-28"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=600&h=400&fit=crop",
+                        title: "Majestic Eagle",
+                        description: "Bald eagle soaring through the sky.",
+                        location: "Alaska",
+                        date: "2024-03-08"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1549366021-9f761d040a94?w=600&h=400&fit=crop",
+                        title: "Wild Deer",
+                        description: "Graceful deer in morning mist.",
+                        location: "Scottish Highlands",
+                        date: "2024-01-25"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=600&h=400&fit=crop",
+                        title: "Forest Bear",
+                        description: "Brown bear foraging in the wilderness.",
+                        location: "Yellowstone Park",
+                        date: "2024-04-10"
+                    },
+                    {
+                        src: "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=600&h=400&fit=crop",
+                        title: "Colorful Parrot",
+                        description: "Tropical parrot with vibrant plumage.",
+                        location: "Costa Rica",
+                        date: "2024-02-15"
+                    }
+                ]
+            }
+        };
+
+        function openModal(groupName) {
+            const modal = document.getElementById('imageModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalImages = document.getElementById('modalImages');
+
+            const group = imageGroups[groupName];
+
+            // Set modal title
+            modalTitle.textContent = group.title;
+
+            // Clear previous images
+            modalImages.innerHTML = '';
+
+            // Add images to modal
+            group.images.forEach(image => {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'image-item';
+
+                imageItem.innerHTML = `
+                    <img src="${image.src}" alt="${image.title}" class="modal-img">
+                    <div class="image-details">
+                        <h3>${image.title}</h3>
+                        <p>${image.description}</p>
+                        <div class="image-meta">
+                            <span><strong>Location:</strong> ${image.location}</span>
+                            <span><strong>Date:</strong> ${image.date}</span>
+                        </div>
+                    </div>
+                `;
+
+                modalImages.appendChild(imageItem);
+            });
+
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
