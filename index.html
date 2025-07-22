@@ -5,6 +5,36 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Beit-El Tibeb - Cultural Training Institute</title>
     <style>
+        .message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Style for disabled submit button */
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 
 * {
     margin: 0;
@@ -1389,7 +1419,7 @@
     <p>Show submit is the online entry management and jury system to help organizations run art exhibitions with ease.</p>
     <div class="registration-options">
     </div>
-<form class="registration-form" id="registrationForm">
+<form class="registrationForm">
     <h3>Register Your Interest</h3>
     <input type="text" name="name" placeholder="Full Name" required>
     <input type="email" name="email" placeholder="Email Address" required>
@@ -1399,6 +1429,7 @@
         <option value="artist">Artist</option>
     </select>
     <button type="submit" class="btn-submit">Submit</button>
+
 </form>
 
     <!-- Features Section -->
@@ -1439,78 +1470,81 @@
             </div>
         </div>
     </section>
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title fade-in">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-form fade-in">
+                <h3>Register for Programs</h3>
+                <!-- Fixed: Added id="registrationForm" and message div -->
+                <form id="registrationForm">
+                    <!-- Add message display div -->
+                    <div id="message" class="message" style="display: none;"></div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-form fade-in">
-                    <h3>Register for Programs</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="program">Interested Program</label>
-                            <select id="program" name="program" required>
-                                <option value="">Select a Program</option>
-                                <option value="basket-weaving">Traditional Basket Weaving</option>
-                                <option value="coffee-ceremony">Ethiopian Coffee Ceremony</option>
-                                <option value="textile-arts">Traditional Textile Arts</option>
-                                <option value="pottery">Pottery & Clay Arts</option>
-                                <option value="culinary">Culinary Heritage</option>
-                                <option value="immersion">Cultural Immersion Program</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your interests and goals..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Application</button>
-                    </form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="program">Interested Program</label>
+                        <select id="program" name="program" required>
+                            <option value="">Select a Program</option>
+                            <option value="basket-weaving">Traditional Basket Weaving</option>
+                            <option value="coffee-ceremony">Ethiopian Coffee Ceremony</option>
+                            <option value="textile-arts">Traditional Textile Arts</option>
+                            <option value="pottery">Pottery & Clay Arts</option>
+                            <option value="culinary">Culinary Heritage</option>
+                            <option value="immersion">Cultural Immersion Program</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <!-- Fixed: Changed id to match what JavaScript expects -->
+                        <textarea id="message-text" name="message" rows="4" placeholder="Tell us about your interests and goals..."></textarea>
+                    </div>
+                    <!-- Fixed: Added id="submitBtn" -->
+                    <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
+                </form>
+            </div>
+            <div class="contact-info fade-in">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Cultural District<br>Heritage Center Building<br>Javeny, Israel</p>
+                    </div>
                 </div>
-                <div class="contact-info fade-in">
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Cultural District<br>Heritage Center Building<br>Javeny, Israel</p>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+972 526 091 347</p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+972 526 091 347</p>
-                        </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>elsa32@walla.com</p>
+                        <p>or</p>
+                        <p>chanieasmamaw@yahoo.com</p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>elsa32@walla.com</p>
-                            <p> or </p>
-                            <p>chanieasmamaw@yahoo.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">⏰</div>
-                        <div>
-                            <h4>Hours</h4>
-                            <p>Monday - Friday: 9AM - 6PM<br>Saturday and Sunday: Closed</p>
-                        </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div>
+                        <h4>Hours</h4>
+                        <p>Monday - Friday: 9AM - 6PM<br>Saturday and Sunday: Closed</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1784,7 +1818,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         <script>
-document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+document.getElementById('registrationForm','registrationForm' ).addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const formData = {
@@ -1813,6 +1847,68 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
     }
 });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js">
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the form - adjust the ID/selector to match your actual form
+    const programForm = document.querySelector('form'); // or use specific ID if you have one
+
+    if (programForm) {
+        programForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const submitBtn = programForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            // Get form data
+            const formData = new FormData(programForm);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                program: formData.get('program'),
+                message: formData.get('message'), // This will be mapped to registration_interest in Flask
+                role: 'participant' // Default role for program registrations
+            };
+
+            console.log('Sending data:', data); // Debug log
+
+            try {
+                // Send data to Flask backend
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                console.log('Response:', result); // Debug log
+
+                if (result.status === 'success') {
+                    alert('Registration submitted successfully! Please check your email for confirmation.');
+                    programForm.reset(); // Clear the form
+                } else {
+                    alert('Error: ' + result.message);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Network error. Please try again.');
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+    }
+});
+</script>
+
+<script src="/form.js"></script>
 </body>
 </html>
