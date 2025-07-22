@@ -408,7 +408,6 @@ def send_email_redirect():
 def favicon():
     return send_from_directory('static', 'favicon.ico')
 
-
 if __name__ == '__main__':
     print("Starting Flask app with debug logging...")
     print(f"Email configuration check:")
