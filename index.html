@@ -1910,5 +1910,44 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script src="/form.js"></script>
+        <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registrationForm");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Stop normal form submission
+
+        const formData = {
+            name: form.querySelector('[name="name"]').value,
+            email: form.querySelector('[name="email"]').value,
+            role: form.querySelector('[name="role"]') ? form.querySelector('[name="role"]').value : "",
+            program: form.querySelector('[name="program"]') ? form.querySelector('[name="program"]').value : "",
+            message: form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value : ""
+        };
+
+        fetch("https://www-bethe-el-com-app.onrender.com/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Server error: " + response.status);
+            return response.json();
+        })
+        .then(data => {
+            alert("Registration successful!");
+            console.log("Server response:", data);
+            form.reset();
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+            alert("Failed to register. Please try again later.");
+        });
+    });
+});
+</script>
+
 </body>
 </html>
