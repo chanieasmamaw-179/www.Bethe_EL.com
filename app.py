@@ -406,20 +406,8 @@ def send_email_redirect():
 
 @app.route('/favicon.ico')
 def favicon():
-<<<<<<< HEAD
-    return send_from_directory('static', 'favicon.ico')
-
-if __name__ == '__main__':
-    print("Starting Flask app with debug logging...")
-    print(f"Email configuration check:")
-    print(f"- EMAIL_ADDRESS: {EMAIL_ADDRESS}")
-    print(f"- EMAIL_PASSWORD configured: {'Yes' if EMAIL_PASSWORD else 'No'}")
-    print(f"- TO_EMAILS: {TO_EMAILS}")
-    app.run(debug=True)
-=======
     return '', 404  # Return 404 for favicon if you don't have one
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)  # Production settings
->>>>>>> 30e8833 (update app.py and  requirements.txt)
