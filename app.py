@@ -9,10 +9,12 @@ import logging
 import datetime
 
 app = Flask(__name__)
-CORS(app)
+
+# Configure CORS to allow requests from your website
+CORS(app, origins=["https://www-bethe-el-com.onrender.com", "http://localhost:3000"])
 
 # Enable detailed logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)  # Changed from DEBUG to INFO for production
 logger = logging.getLogger(__name__)
 
 load_dotenv()
@@ -22,22 +24,25 @@ EMAIL_ADDRESS = 'chanieasmamaw@yahoo.com'
 EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 TO_EMAILS = ['chanieasmamaw@yahoo.com', 'elsa32@gmail.com']
 
-# Debug: Check if environment variables are loaded
-print(f"EMAIL_PASSWORD loaded: {'Yes' if EMAIL_PASSWORD else 'No'}")
-print(f"EMAIL_ADDRESS: {EMAIL_ADDRESS}")
-print(f"TO_EMAILS: {TO_EMAILS}")
-
+# Health check endpoint
+@app.route('/health')
+def health_check():
+    return jsonify({'status': 'healthy', 'timestamp': datetime.datetime.now().isoformat()})
 
 @app.route('/')
 def home():
     return "Flask Email Server is running! Use POST /register for registrations."
-
 
 @app.route('/form.js')
 def serve_javascript():
     """Serve the JavaScript file for form handling"""
     javascript_content = """
 document.addEventListener('DOMContentLoaded', function() {
+    // Get the current domain for API calls
+    const API_BASE_URL = window.location.hostname === 'localhost' ? 
+        'http://localhost:5000' : 
+        'https://your-flask-app-name.onrender.com';  // Replace with your actual Flask app URL
+
     // Handle both registration forms and interest forms
     const forms = document.querySelectorAll('form[id*="registration"], form[id*="Registration"], form[id*="interest"], form[id*="Interest"]');
 
@@ -91,8 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Submitting form data:', formData);
 
             try {
-                // Always use the unified /register endpoint
-                const response = await fetch('/register', {
+                // Use the API base URL for the request
+                const response = await fetch(`${API_BASE_URL}/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -135,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Registration Error:', error);
                 if (messageDiv) {
                     messageDiv.className = 'message error';
-                    messageDiv.textContent = 'Network error. Please check your connection and try again.';
+                    messageDiv.textContent = 'Registration service temporarily unavailable. Please try again later.';
                     messageDiv.style.display = 'block';
                 }
             } finally {
@@ -149,9 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
-// Additional utility functions
+// Rest of your JavaScript functions remain the same...
 function showMessage(message, type = 'info') {
     const messageDiv = document.getElementById('message') || document.querySelector('.message');
     if (messageDiv) {
@@ -169,7 +172,7 @@ function showMessage(message, type = 'info') {
 }
 
 function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
     return emailRegex.test(email);
 }
 
@@ -215,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
     response.headers['Expires'] = '0'
     return response
 
-
+# Rest of your existing endpoints remain the same...
 @app.route('/test-email', methods=['GET'])
 def test_email():
     """Test endpoint to check email configuration"""
@@ -241,7 +244,6 @@ def test_email():
     except Exception as e:
         logger.error(f"Email test failed: {str(e)}")
         return jsonify({'status': 'fail', 'message': f'Email test failed: {str(e)}'}), 500
-
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -396,16 +398,15 @@ def register():
         logger.error(f"Unexpected error during registration: {str(e)}")
         return jsonify({'status': 'fail', 'message': 'Registration failed. Please try again later.'}), 500
 
-
 @app.route('/send-email', methods=['POST'])
 def send_email_redirect():
     """Legacy endpoint - redirects to unified register endpoint for backward compatibility"""
     logger.info("Legacy /send-email endpoint called - redirecting to /register")
     return register()
 
-
 @app.route('/favicon.ico')
 def favicon():
+<<<<<<< HEAD
     return send_from_directory('static', 'favicon.ico')
 
 if __name__ == '__main__':
@@ -415,3 +416,10 @@ if __name__ == '__main__':
     print(f"- EMAIL_PASSWORD configured: {'Yes' if EMAIL_PASSWORD else 'No'}")
     print(f"- TO_EMAILS: {TO_EMAILS}")
     app.run(debug=True)
+=======
+    return '', 404  # Return 404 for favicon if you don't have one
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)  # Production settings
+>>>>>>> 30e8833 (update app.py and  requirements.txt)
