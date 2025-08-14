@@ -22,7 +22,7 @@ load_dotenv()
 # Configure your email settings
 EMAIL_ADDRESS = 'chanieasmamaw@yahoo.com'
 EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
-TO_EMAILS = ['chanieasmamaw@yahoo.com', 'elsa32@gmail.com']
+TO_EMAILS = ['chanieasmamaw@yahoo.com', 'elsa32@walla.com']
 
 # Health check endpoint
 @app.route('/health')
@@ -409,5 +409,5 @@ def favicon():
     return '', 404  # Return 404 for favicon if you don't have one
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5001))
     app.run(host='0.0.0.0', port=port, debug=False)  # Production settings
