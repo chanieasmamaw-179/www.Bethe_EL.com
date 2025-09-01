@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Beit-El Tibeb - Cultural Training Institute</title>
     <style>
-       /* General Styles for Both Views - SVG Sizing */
+/* General Styles for Both Views - SVG Sizing */
 svg {
     width: 100%; /* Make SVG responsive */
     height: auto; /* Ensure SVG scales proportionally */
@@ -21,11 +21,10 @@ svg {
     border-radius: 4px;
     font-weight: bold;
 }
-
 .message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background-color: #e8f5e8;
+    color: #2d5016;
+    border: 1px solid #c3e6c3;
 }
 
 .message.error {
@@ -35,9 +34,9 @@ svg {
 }
 
 .message.info {
-    background-color: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
 }
 
 /* Disabled Submit Button */
@@ -52,13 +51,12 @@ svg {
     padding: 0;
     box-sizing: border-box;
 }
-
 /* Base Body Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+    background: linear-gradient(135deg, #fdf6f0 0%, #e6d4c1 50%, #a07c5a 100%);
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -66,6 +64,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     text-align: center;
+    color: #5c3b1e; /* darker coffee-brown for better contrast */
 }
 
 /* Sales Grid */
@@ -77,23 +76,22 @@ body {
 }
 
 .sale {
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
     padding: 10px;
-    border: 1px solid #4a4a8a;
+    border: 1px solid #d4af37;
     border-radius: 10px;
     text-align: center;
-    color: white;
+    color: #8b4513;
 }
 
 .sale img {
-    width: 80%;
-    height: 80%;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
 }
 
 .sale .price {
-    color: #e0e0ff;
+    color: #b8860b;
     font-weight: bold;
     display: block;
     margin-top: 5px;
@@ -101,13 +99,13 @@ body {
 
 /* Sales Section */
 .sales-section {
-    background: linear-gradient(135deg, #1a1a3e 0%, #2d2d5f 50%, #3e3e7f 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 50%, #dcc299 100%);
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(255,255,255,0.3);
+    box-shadow: 0 20px 40px rgba(139,69,19,0.2);
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
-    color: white;
+    color: #8b4513;
 }
 
 .sales-section:hover {
@@ -115,7 +113,7 @@ body {
 }
 
 .sales-section h2 {
-    color: white;
+    color: #8b4513;
     margin-bottom: 30px;
     font-size: 2rem;
     text-align: center;
@@ -130,7 +128,7 @@ body {
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    background: linear-gradient(45deg, #d4af37, #b8860b);
 }
 
 .sales-section, .exhibition-section {
@@ -142,10 +140,13 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #FFD700;
+    color: #fff;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+    background-image: url('https://img.freepik.com/premium-photo/brainstorm-whit-new-creative-ideas-art-collage-illustration_739548-3934.jpg?w=2000');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
 }
@@ -157,7 +158,20 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(15,15,35,0.8) 0%, rgba(26,26,62,0.8) 100%);
+    background: linear-gradient(135deg, rgba(139,69,19,0.7) 0%, rgba(101,67,33,0.6) 50%, rgba(212,175,55,0.4) 100%);
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(212,175,55,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 15s ease-in-out infinite reverse;
     z-index: 1;
 }
 
@@ -166,13 +180,42 @@ body {
     max-width: 900px;
     padding: 0 20px;
     animation: fadeInUp 1s ease-out;
+    position: relative;
+}
+
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 100px;
+    height: 100px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 L60,30 L80,30 L65,45 L70,65 L50,55 L30,65 L35,45 L20,30 L40,30 Z" fill="%23d4af37" opacity="0.6"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: rotate 10s linear infinite;
+    z-index: -1;
+}
+
+.hero-content::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 80px;
+    height: 80px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23b8860b" stroke-width="2" opacity="0.4"/><circle cx="50" cy="50" r="25" fill="none" stroke="%23d4af37" stroke-width="1.5" opacity="0.6"/><circle cx="50" cy="50" r="10" fill="%238b4513" opacity="0.3"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: float 12s ease-in-out infinite;
+    z-index: -1;
 }
 
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    background: linear-gradient(45deg, #FFD700, #FFD700);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+    background: linear-gradient(45deg, #d4af37, #fff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -181,27 +224,61 @@ body {
 .hero p {
     font-size: 1.4rem;
     margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    color: #fff;
+    background: rgba(139,69,19,0.3);
+    padding: 15px 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
 }
 
 .cta-button {
     display: inline-block;
     padding: 15px 40px;
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    color: #FFD700;
+    background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+    color: #fff;
     text-decoration: none;
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    border: 2px solid rgba(212,175,55,0.8);
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+    background: linear-gradient(135deg, #fff 0%, #d4af37 100%);
+    color: #8b4513;
 }
 
+/* Floating animation for artistic elements */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(1deg); }
+    66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+}
 /* Navigation */
 nav {
     position: fixed;
@@ -214,10 +291,6 @@ nav {
     transition: all 0.3s ease;
 }
 
-nav.scrolled {
-    background: linear-gradient(135deg, rgba(20,20,40,0.98) 0%, rgba(30,30,60,0.98) 100%);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-}
 
 .nav-container {
     max-width: 1200px;
@@ -227,41 +300,43 @@ nav.scrolled {
     align-items: center;
     padding: 0 20px;
 }
+.logo-image {
+    width: 50vw;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 4px solid #d4af37;
+    box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #d4af37, #b8860b);
+    padding: 2px;
+
+    display: block;
+    margin: 0 auto; /* centers horizontally */
+}
+
 
 .logo {
     font-weight: bold;
-    color: #00CED1;
+    color: #f5f0e8;
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.logo-right {
-    font-weight: bold;
-    color: #00CED1;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #FFD700;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .logo-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    background: linear-gradient(45deg, #d4af37, #b8860b);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    color: #FFD700;
+    color: #f5f0e8;
     font-weight: bold;
 }
 
@@ -274,7 +349,7 @@ nav.scrolled {
 }
 
 .nav-menu a {
-    color: #996515;
+
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -282,7 +357,7 @@ nav.scrolled {
 }
 
 .nav-menu a:hover {
-    color: blue;
+    color: #7d08a7;
 }
 
 /* Advertising Section with Fixed Height */
@@ -291,7 +366,7 @@ nav.scrolled {
     max-width: 1800px;
     margin: 0 auto;
     height: 900px;
-    background: linear-gradient(135deg, #1a1a3e 0%, #2d2d5f 50%, #3e3e7f 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 50%, #dcc299 100%);
 }
 
 .advertising-section img {
@@ -307,7 +382,7 @@ nav.scrolled {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 3.5rem;
-    color: #996515;
+    color: #8b4513;
     position: relative;
 }
 
@@ -316,22 +391,20 @@ nav.scrolled {
     display: block;
     width: 100px;
     height: 4px;
-    background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    background: linear-gradient(45deg, #d4af37, #b8860b);
     margin: 20px auto;
     border-radius: 2px;
 }
-
 /* Slideshow Container with Fixed Dimensions */
 .slideshow-container {
     position: relative;
     max-width: 100%;
     margin: auto;
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 40px rgba(139,69,19,0.3);
 }
-
 .rotating-banner {
     position: relative;
     width: 100%;
@@ -365,14 +438,13 @@ nav.scrolled {
     object-fit: cover;
     border-radius: 20px;
 }
-
 /* Navigation Arrows */
 .slide-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    color: #FFD700;
+    background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+    color: #f5f0e8;
     border: none;
     width: 60px;
     height: 60px;
@@ -387,9 +459,9 @@ nav.scrolled {
 }
 
 .slide-nav:hover {
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #b8860b 0%, #8b4513 100%);
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
 }
 
 .prev {
@@ -399,19 +471,18 @@ nav.scrolled {
 .next {
     right: 20px;
 }
-
 /* Slide Indicators */
 .slide-indicators {
     text-align: center;
     padding: 20px 0;
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
 }
 
 .indicator {
     display: inline-block;
     width: 15px;
     height: 15px;
-    background: #4a4a8a;
+    background: #dcc299;
     border-radius: 50%;
     margin: 0 8px;
     cursor: pointer;
@@ -419,12 +490,12 @@ nav.scrolled {
 }
 
 .indicator.active {
-    background: #6366f1;
+    background: #d4af37;
     transform: scale(1.2);
 }
 
 .indicator:hover {
-    background: #8b5cf6;
+    background: #b8860b;
     transform: scale(1.1);
 }
 
@@ -433,8 +504,8 @@ nav.scrolled {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: linear-gradient(135deg, rgba(15,15,35,0.8) 0%, rgba(26,26,62,0.8) 100%);
-    color: #e0e0ff;
+    background: linear-gradient(135deg, rgba(139,69,19,0.8) 0%, rgba(101,67,33,0.8) 100%);
+    color: #f5f0e8;
     padding: 8px 15px;
     border-radius: 20px;
     font-size: 14px;
@@ -447,8 +518,8 @@ nav.scrolled {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(15,15,35,0.9));
-    color: #e0e0ff;
+    background: linear-gradient(transparent, rgba(139,69,19,0.9));
+    color: #f5f0e8;
     padding: 40px 20px 20px;
     text-align: center;
 }
@@ -466,7 +537,7 @@ nav.scrolled {
 /* Team Section */
 .team-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #1a1a3e 0%, #2d2d5f 50%, #3e3e7f 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 50%, #dcc299 100%);
 }
 
 .team-container {
@@ -479,7 +550,7 @@ nav.scrolled {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    color: white;
+    color: #8b4513;
 }
 
 .team-grid {
@@ -490,32 +561,32 @@ nav.scrolled {
 }
 
 .team-member-card {
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 35px rgba(139,69,19,0.2);
     transition: all 0.3s ease;
     cursor: pointer;
-    border: 1px solid #4a4a8a;
+    border: 1px solid #dcc299;
 }
 
 .team-member-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 25px 50px rgba(139,69,19,0.3);
 }
 
 .team-avatar {
     width: 80px;
     height: 80px;
-    background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    background: linear-gradient(45deg, #d4af37, #b8860b);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
     font-weight: bold;
-    color: #FFD700;
+    color: #f5f0e8;
     margin: 0 auto 1rem;
 }
 
@@ -526,46 +597,45 @@ nav.scrolled {
     object-fit: cover;
     margin: 0 auto 1rem auto;
     display: block;
-    border: 3px solid #e0e0e0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #d4af37;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.2);
 }
 
 .team-member-card h3 {
-    color: #e0e0ff;
+    color: #8b4513;
     margin-bottom: 0.5rem;
 }
 
 .team-member-card .role {
-    color: #6366f1;
+    color: #black;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
 .team-member-card .credentials {
-    color: #a0a0d0;
+    color: #a0804a;
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
 .team-member-card .click-hint {
-    color: #6366f1;
+    color: #blue;
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
 .team-member-card .click-hint a {
-    color: #6366f1;
+    color: #blue;
     text-decoration: none;
 }
 
 .team-member-card .click-hint a:hover {
     text-decoration: underline;
 }
-
 /* About Section */
 .about {
     padding: 100px 0;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+    background: linear-gradient(135deg, #f5f0e8 0%, #ede0d3 50%, #e6d4c1 100%);
 }
 
 .container {
@@ -583,7 +653,7 @@ nav.scrolled {
 
 .about-text {
     font-size: 1.2rem;
-    color: #d0d0e0;
+    color: #8b4513;
     line-height: 1.8;
 }
 
@@ -591,7 +661,7 @@ nav.scrolled {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 40px rgba(139,69,19,0.3);
     transform: perspective(1000px) rotateY(-5deg);
     transition: transform 0.5s ease;
 }
@@ -605,11 +675,10 @@ nav.scrolled {
     height: 400px;
     object-fit: cover;
 }
-
 /* Programs Section */
 .programs {
     padding: 100px 0;
-    background: linear-gradient(135deg, #1a1a3e 0%, #2d2d5f 50%, #3e3e7f 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 50%, #dcc299 100%);
 }
 
 .programs-grid {
@@ -620,18 +689,18 @@ nav.scrolled {
 }
 
 .program-card {
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 35px rgba(139,69,19,0.2);
     transition: all 0.3s ease;
     position: relative;
-    border: 1px solid #4a4a8a;
+    border: 1px solid #dcc299;
 }
 
 .program-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 25px 50px rgba(139,69,19,0.3);
 }
 
 .program-card::before {
@@ -641,17 +710,17 @@ nav.scrolled {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    background: linear-gradient(45deg, #d4af37, #b8860b);
 }
 
 .program-image {
     height: 250px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, #d4af37, #b8860b);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 4rem;
-    color: #FFD700;
+    color: #f5f0e8;
 }
 
 .program-content {
@@ -661,11 +730,11 @@ nav.scrolled {
 .program-content h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #e0e0ff;
+    color: #8b4513;
 }
 
 .program-content p {
-    color: #a0a0d0;
+    color: #a0804a;
     margin-bottom: 1.5rem;
 }
 
@@ -675,28 +744,26 @@ nav.scrolled {
     align-items: center;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #4a4a8a;
+    border-top: 1px solid #dcc299;
 }
-
 .duration {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
-    color: #FFD700;
+    color: #f5f0e8;
     font-weight: bold;
 }
 
 .price {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #6366f1;
+    color: #d4af37;
 }
-
 /* Features Section */
 .features {
     padding: 100px 0;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+    background: linear-gradient(135deg, #f5f0e8 0%, #ede0d3 50%, #e6d4c1 100%);
 }
 
 .features-grid {
@@ -707,18 +774,18 @@ nav.scrolled {
 }
 
 .feature-item {
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 35px rgba(139,69,19,0.2);
     transition: all 0.3s ease;
-    border: 1px solid #4a4a8a;
+    border: 1px solid #dcc299;
 }
 
 .feature-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 25px 50px rgba(139,69,19,0.3);
 }
 
 .feature-icon {
@@ -727,19 +794,18 @@ nav.scrolled {
 }
 
 .feature-item h3 {
-    color: #e0e0ff;
+    color: #8b4513;
     margin-bottom: 1rem;
 }
 
 .feature-item p {
-    color: #a0a0d0;
+    color: #a0804a;
     line-height: 1.6;
 }
-
 /* Contact Section */
 .contact {
     padding: 100px 0;
-    background: linear-gradient(135deg, #1a1a3e 0%, #2d2d5f 50%, #3e3e7f 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 50%, #dcc299 100%);
 }
 
 .contact-content {
@@ -750,15 +816,15 @@ nav.scrolled {
 }
 
 .contact-form {
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    border: 1px solid #4a4a8a;
+    box-shadow: 0 15px 35px rgba(139,69,19,0.2);
+    border: 1px solid #dcc299;
 }
 
 .contact-form h3 {
-    color: #e0e0ff;
+    color: #8b4513;
     margin-bottom: 2rem;
 }
 
@@ -769,7 +835,7 @@ nav.scrolled {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #d0d0e0;
+    color: #8b4513;
     font-weight: 500;
 }
 
@@ -778,24 +844,24 @@ nav.scrolled {
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 2px solid #4a4a8a;
+    border: 2px solid #dcc299;
     border-radius: 10px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
-    background: linear-gradient(135deg, #2a2a5a 0%, #3a3a6a 100%);
-    color: #e0e0ff;
+    background: linear-gradient(135deg, #f5f0e8 0%, #ede0d3 100%);
+    color: #8b4513;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #6366f1;
+    border-color: #d4af37;
 }
 
 .submit-btn {
-    background: linear-gradient(45deg, #6366f1, #8b5cf6);
-    color: #FFD700;
+    background: linear-gradient(45deg, #d4af37, #b8860b);
+    color: #f5f0e8;
     padding: 15px 30px;
     border: none;
     border-radius: 50px;
@@ -808,7 +874,7 @@ nav.scrolled {
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
 }
 
 .contact-info {
@@ -822,10 +888,10 @@ nav.scrolled {
     align-items: center;
     gap: 1rem;
     padding: 1.5rem;
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    border: 1px solid #4a4a8a;
+    box-shadow: 0 10px 25px rgba(139,69,19,0.2);
+    border: 1px solid #dcc299;
 }
 
 .contact-icon {
@@ -834,30 +900,29 @@ nav.scrolled {
 }
 
 .contact-item h4 {
-    color: #e0e0ff;
+    color: #8b4513;
     margin-bottom: 0.5rem;
 }
 
 .contact-item p {
-    color: #a0a0d0;
+    color: #a0804a;
     margin: 0;
 }
-
-/* Social Media Section */
+* Social Media Section */
 .social-media {
     text-align: center;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d2d5f 100%);
+    background: linear-gradient(135deg, #f5f0e8 0%, #ede0d3 50%, #e6d4c1 100%);
 }
 
 .social-media h1 {
     margin-bottom: 15px;
-    color: #e0e0ff;
+    color: #8b4513;
 }
 
 .social-media p {
     margin-bottom: 30px;
-    color: #a0a0d0;
+    color: #a0804a;
     line-height: 1.5;
 }
 
@@ -873,43 +938,43 @@ nav.scrolled {
     align-items: center;
     gap: 10px;
     padding: 12px 20px;
-    background: linear-gradient(135deg, #1e1e3f 0%, #2a2a5a 100%);
-    color: #e0e0ff;
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
+    color: #8b4513;
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(139,69,19,0.2);
     min-width: 180px;
     justify-content: center;
-    border: 1px solid #4a4a8a;
+    border: 1px solid #dcc299;
 }
 
 .social-link:hover {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    color: #FFD700;
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+    color: #f5f0e8;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
     transform: translateY(-2px);
 }
 
 .social-link.facebook {
     background: linear-gradient(135deg, #1877f2 0%, #42a5f5 100%);
-    color: #FFD700;
+    color: #f5f0e8;
 }
 
 .social-link.instagram {
     background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-    color: #FFD700;
+    color: #f5f0e8;
 }
 
 .social-link.twitter {
     background: linear-gradient(135deg, #1da1f2 0%, #42a5f5 100%);
-    color: #FFD700;
+    color: #f5f0e8;
 }
 
 .social-link.tiktok {
-    background: linear-gradient(135deg, #F3EFF0 0%, #333333 100%);
-    color: #FFD700;
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: #f5f0e8;
 }
 
 .social-link .icon {
@@ -919,18 +984,17 @@ nav.scrolled {
 .social-link span:last-child {
     font-weight: 500;
 }
-
 /* Footer */
 footer {
     background: #8B4513;
-    color: #FFF9DB;
+    color: #f5f0e8;
     text-align: center;
     padding: 3rem 0;
 }
 
 /* Registration Section */
 .registration-section {
-    background-color: #fcf8f2;
+    background-color: #f5f0e8;
     padding: 40px;
     border-radius: 8px;
     text-align: center;
@@ -940,11 +1004,12 @@ footer {
 .registration-section h2 {
     font-size: 2em;
     margin-bottom: 10px;
+    color: #8b4513;
 }
 
 .registration-section p {
     font-size: 1.1em;
-    color: #666;
+    color: #a0804a;
     margin-bottom: 30px;
 }
 
@@ -958,6 +1023,7 @@ footer {
 .option h4 {
     margin-bottom: 10px;
     font-weight: bold;
+    color: #8b4513;
 }
 
 .btn {
@@ -969,13 +1035,13 @@ footer {
 }
 
 .btn-org {
-    background-color: #404b67;
-    color: white;
+    background-color: #8b4513;
+    color: #f5f0e8;
 }
 
 .btn-artist {
-    background-color: #f3b940;
-    color: white;
+    background-color: #d4af37;
+    color: #8b4513;
 }
 
 .registration-form {
@@ -1207,13 +1273,11 @@ body {
 
 /* Navigation */
 nav {
-    position: fixed;
     top: 0;
     width: 100%;
-    background: linear-gradient(135deg, #FFD700 0%, #FFB700 50%, #FF8C00 100%);
+
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 1rem 0;
     transition: all 0.3s ease;
 }
 
@@ -2392,12 +2456,19 @@ display: flex;
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../static/img/L1.jpeg" alt="Beit-El Tibeb Logo" class="logo-image">
 
+        <section>
+            <div class="logo-image">
+                  <img src="../static/img/LO_23.jpg" alt="Beit-El Tibeb Logo" class="logo-image">
             </div>
+        </section>
 
+<section style="font-size: 40px; color: #pinck;">
+  <strong>Beit-El Tibel Cultural Heritage & Arts</strong>
+</section>
+
+
+         <div class="nav-container">
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -2406,18 +2477,18 @@ display: flex;
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#sales">Art and Product Marketplaces</a></li>
+                <li>
+                <a href="static/img/art-and-shop-gallery.pdf" target="_blank">Art and Shop Gallery</a>
+                </li>
                 <li><a href="#exhibitions">Exhibitions</a></li>
             </ul>
 
-            <div class="logo-right">
-                <img src="../static/img/22-resized.jpg" alt="Beit-El Tibeb Logo" class="logo-image">
-            </div>
+
         </div>
     </nav>
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Beit-El Tibeb</h1>
             <p>Cultural Training Institute - Preserving Ethiopian-Israeli Heritage Through Art & Craft</p>
             <a href="#programs" class="cta-button">Explore Programs</a>
         </div>
@@ -2511,19 +2582,21 @@ display: flex;
 <section id="team" class="team-section">
     <div class="team-container">
         <h2 class="section-title fade-in">Our Team Leaders</h2>
-        <p style="text-align: center; color: #FFD700; font-size: 1.1rem; margin-bottom: 2rem;">
+        <p style="text-align: center; color: #black; font-size: 1.1rem; margin-bottom: 2rem;">
             Meet the passionate experts Bethe-EL Tibeb Art and Cultural Training Institute
         </p>
 
         <div class="team-grid">
-            <!-- Asmamaw Yehun -->
+
+                       <!-- Elsa Gesesewu Gedamu -->
             <div class="team-member-card fade-in">
-                <img src="../static/img/T11.jpeg" alt="Asmamaw Yehun" class="team-member-image">
-                <h3>Asmamaw Yehun</h3>
-                <p class="role">Business Partner | IT Manager | Technology Innovation<br>
-                PhD | Certified Software Engineer</p>
-                <p>My role is to leverage advanced technology solutions and strategic partnerships to drive business growth and innovation. As an IT Manager, I oversee technical infrastructure and lead development teams to deliver cutting-edge software solutions.</p>
-                <p class="click-hint"><a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank">LinkedIn Profile</a></p>
+                <img src="../static/img/T3.jpeg" alt=" Artist Tesfaye Tegegn" class="team-member-image">
+                <h3>Artist Tesfaye Tegegn</h3>
+                <p class="role">Co-Founder & Cultural Heritage Institute</p>
+                <p>Business Partner and cultural heritage expert. My role centers on preserving authentic cultural knowledge and training as a professional expert.</p>
+                <p>Master of Arts - MA, Visual Literacy and Curatorship, Seminar Hakibbutzim College<br>
+                Studied at University of Haifa</p>
+                <p class="click-hint"><a href="https://www.facebook.com/elsa.gedamu" target="_blank">Facebook Profile</a></p>
             </div>
 
             <!-- Elsabet Tegegney -->
@@ -2537,16 +2610,16 @@ display: flex;
                 <p class="click-hint"><a href="https://www.linkedin.com/in/elsa-tegegney-0a8855226/?trk=contact-info" target="_blank">LinkedIn Profile</a></p>
             </div>
 
-            <!-- Elsa Gesesewu Gedamu -->
+            <!-- Asmamaw Yehun -->
             <div class="team-member-card fade-in">
-                <img src="../static/img/T3.jpeg" alt=" Artist Tesfaye Tegegn" class="team-member-image">
-                <h3>Artist Tesfaye Tegegn</h3>
-                <p class="role">Co-Founder & Cultural Heritage Institute</p>
-                <p>Business Partner and cultural heritage expert. My role centers on preserving authentic cultural knowledge and training as a professional expert.</p>
-                <p>Master of Arts - MA, Visual Literacy and Curatorship, Seminar Hakibbutzim College<br>
-                Studied at University of Haifa</p>
-                <p class="click-hint"><a href="https://www.facebook.com/elsa.gedamu" target="_blank">Facebook Profile</a></p>
+                <img src="../static/img/T11.jpeg" alt="Asmamaw Yehun" class="team-member-image">
+                <h3>Asmamaw Yehun</h3>
+                <p class="role">Business Partner | IT Manager | Technology Innovation<br>
+                PhD | Certified Software Engineer</p>
+                <p>My role is to leverage advanced technology solutions and strategic partnerships to drive business growth and innovation. As an IT Manager, I oversee technical infrastructure and lead development teams to deliver cutting-edge software solutions.</p>
+                <p class="click-hint"><a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank">LinkedIn Profile</a></p>
             </div>
+
         </div>
     </div>
 </section>
@@ -2898,10 +2971,7 @@ display: flex;
 
 
    <section id="social-media" class="social-media">
-    <h1>Follow Us</h1>
-    <p>Stay connected with Sina Cafe! Follow us on social media for updates, special offers, and more delicious content.</p>
-
-    <div class="social-links">
+       <div class="social-links">
         <a href="https://www.facebook.com/priel322?rdid=dU9yBmCEAOJRu3LA&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Ay9obkm5G%2F" target="_blank" class="social-link facebook">
             <span class="icon">📘</span>
             <span>Like us on Facebook</span>
