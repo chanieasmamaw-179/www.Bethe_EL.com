@@ -2805,7 +2805,7 @@ display: flex;
     <p>Show submit is the online entry management and jury system to help organizations run art exhibitions with ease.</p>
     <div class="registration-options">
     </div>
-        <script src="https://app-py-wtns.onrender.com/form.js"></script>
+        <script src="https://www-bethe-el-com-app.onrender.com/form.js"></script>
 <form class="registration-form" id="registrationForm">
     <h3>Register Your Interest</h3>
     <input type="text" name="name" placeholder="Full Name" required>
@@ -3149,50 +3149,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 </script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const slides = document.querySelectorAll('.banner-slide');
-    let currentSlide = 0;
 
-    function showNextSlide() {
-        // Hide current slide
-        slides[currentSlide].classList.remove('active');
-
-        // Move to next
-        currentSlide = (currentSlide + 1) % slides.length;
-        const nextSlide = slides[currentSlide];
-        nextSlide.classList.add('active');
-
-        // Check if next slide is a video
-        const video = nextSlide.querySelector('video');
-
-        if (video) {
-            video.currentTime = 0; // Restart video
-            video.play();
-
-            // Wait for the video to finish before moving to next slide
-            video.onended = () => {
-                showNextSlide();
-            };
-        } else {
-            // If image, wait 4 seconds
-            setTimeout(showNextSlide, 4000);
-        }
-    }
-
-    // Start first slide
-    slides[currentSlide].classList.add('active');
-
-    // Delay based on content
-    const firstVideo = slides[currentSlide].querySelector('video');
-    if (firstVideo) {
-        firstVideo.play();
-        firstVideo.onended = () => showNextSlide();
-    } else {
-        setTimeout(showNextSlide, 4000);
-    }
-});
-</script>
    <script>
         const images = document.querySelectorAll('.food-slideshow img');
         let currentIndex = 0;
@@ -3311,4 +3268,3 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="/form.js"></script>
 </body>
 </html>
-
