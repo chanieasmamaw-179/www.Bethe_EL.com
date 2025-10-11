@@ -2998,18 +2998,7 @@ display: flex;
             alert('Thank you for your interest! We will contact you soon to discuss your application.');
         });
     </script>
-    <script>
-        const images = document.querySelectorAll('.food-slideshow img');
-        let currentIndex = 0;
 
-        function showNextImage() {
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add('active');
-        }
-
-        setInterval(showNextImage, 3000); // Change image every 3 seconds
-    </script>
 
 <!-- Google Translate Element -->
 <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
