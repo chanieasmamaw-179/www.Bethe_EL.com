@@ -807,6 +807,27 @@ nav {
     background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 50%, #dcc299 100%);
 }
 
+/* Contact Section - Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 15px;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+        margin: 0 10px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2494,12 +2515,74 @@ display: flex;
     }
 }
 
+        /* Exhibition/Registration Section - Mobile Optimized */
+.exhibition-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 50%, #dcc299 100%);
+}
+
+.registration-section {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fcf8f2;
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.registration-form {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    .exhibition-section {
+        padding: 40px 15px;
+    }
+
+    .registration-section {
+        padding: 25px 15px;
+        margin: 0 10px;
+    }
+
+    .registration-form {
+        padding: 0 5px;
+    }
+
+    .registration-form input,
+    .registration-form select,
+    .registration-form textarea {
+        width: 100%;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-section {
+        padding: 20px 10px;
+        margin: 0 5px;
+    }
+
+    .registration-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .registration-section p {
+        font-size: 0.95rem;
+    }
+}
+
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
-    <nav id="navbar">
         <section>
             <div>
                 <img src="../static/img/LO_23.jpg" alt="Beit-El Tibeb Logo" class="logo-image">
@@ -2716,11 +2799,11 @@ display: flex;
     </section>
 
     <!-- Exhibition Section -->
-    <section id="exhibitions" class="exhibition-section">
-        <div class="registration-section">
-            <h2>Online entry made easy for art exhibitions</h2>
-            <p>Show submit is the online entry management and jury system to help organizations run art exhibitions with ease.</p>
-            <form class="registration-form" id="registrationForm">
+<section id="exhibitions" class="exhibition-section">
+    <div class="registration-section">
+        <h2>Online entry made easy for art exhibitions</h2>
+        <p>Show submit is the online entry management and jury system to help organizations run art exhibitions with ease.</p>
+        <form class="registration-form" id="registrationForm">
                 <h3>Register Your Interest</h3>
                 <div id="message" class="message"></div>
                 <input type="text" name="name" placeholder="Full Name" required>
@@ -2847,14 +2930,15 @@ display: flex;
     </section>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/972526091347?text=Hello%20Bethe-EL!%20I'm%20interested%20in%20your%20workshops"
-       class="whatsapp-float"
-       target="_blank"
-       aria-label="Chat on WhatsApp">
-        <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2C8.268 2 2 8.268 2 16C2 18.337 2.587 20.537 3.625 22.462L2 30L9.768 28.412C11.625 29.35 13.75 29.875 16 29.875C23.732 29.875 30 23.607 30 15.875C30 8.143 23.732 2 16 2Z" fill="white"/>
-        </svg>
-    </a>
+<a href="https://wa.me/972526091347?text=Hello%20Bethe-EL!%20I'm%20interested%20in%20your%20workshops"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" fill="#25D366"/>
+        <path d="M23.5 8.5C22.1 7.1 20.3 6.2 18.3 5.9C16.3 5.6 14.2 6 12.5 7C10.8 8 9.5 9.5 8.9 11.4C8.3 13.3 8.4 15.3 9.2 17.1L8.5 20.5L12 19.8C13.3 20.4 14.7 20.7 16.1 20.7C17.9 20.7 19.7 20.1 21.1 19C22.5 17.9 23.5 16.4 24 14.7C24.5 13 24.4 11.2 23.7 9.6C23.3 8.8 22.7 8.1 22 7.5L23.5 8.5ZM21.8 17.3C21.5 17.9 21 18.4 20.4 18.7C19.8 19 19.1 19.1 18.5 19C17.9 18.9 17.3 18.6 16.8 18.2C15.6 17.3 14.6 16.1 13.9 14.8C13.5 14.1 13.3 13.3 13.3 12.5C13.3 11.9 13.5 11.3 13.9 10.8C14.1 10.5 14.4 10.3 14.7 10.2C14.8 10.2 14.9 10.2 15 10.2C15.2 10.2 15.4 10.2 15.5 10.6C15.7 11.1 16.1 12.1 16.2 12.2C16.2 12.3 16.3 12.4 16.2 12.5C16.2 12.6 16.2 12.7 16.1 12.8C16 12.9 15.9 13 15.8 13.1C15.7 13.2 15.6 13.3 15.7 13.5C16 14 16.4 14.4 16.8 14.8C17.3 15.2 17.9 15.5 18.5 15.7C18.7 15.8 18.8 15.7 18.9 15.6C19 15.5 19.4 15 19.5 14.8C19.6 14.6 19.8 14.7 19.9 14.7C20.3 14.9 21.3 15.4 21.5 15.5C21.7 15.6 21.8 15.6 21.9 15.7C21.9 16 21.9 16.8 21.8 17.3Z" fill="white"/>
+    </svg>
+</a>
 
     <!-- Google Translate Element -->
     <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
