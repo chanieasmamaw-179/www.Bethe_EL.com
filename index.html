@@ -238,7 +238,7 @@ nav {
 section {
     width: 100%;
     overflow-x: hidden;
-
+    padding: 60px 20px;
 }
 
 /* Advertising Section */
@@ -1069,7 +1069,7 @@ footer a:hover {
                     <p>Business Partner and cultural heritage expert. My role centers on preserving authentic cultural knowledge and training as a professional expert.</p>
                     <p>Master of Arts - MA, Visual Literacy and Curatorship, Seminar Hakibbutzim College<br>
                     Studied at University of Haifa</p>
-                    <p class="click-hint"><a href="https://web.facebook.com/priel322?rdid=KRMx89DtJtq6KPFc&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F1CotUicQsL%2F%3Fref%3D1%26_rdc%3D1%26_rdr" target="_blank">Facebook Profile</a></p>
+                    <p class="click-hint"><a href="https://www.facebook.com/elsa.gedamu" target="_blank">Facebook Profile</a></p>
                 </div>
 
                 <!-- Elsabet Tegegney -->
@@ -1391,7 +1391,9 @@ footer a:hover {
         // CHANGE THIS once your Flask backend is deployed (e.g. Render URL).
         // Locally, this matches app.py's default port (5001).
         // ===================================================================
-        const API_BASE_URL = 'http://localhost:5001'; // <-- REPLACE with your deployed Flask URL, e.g. 'https://your-app.onrender.com'
+        const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? 'http://localhost:5001'
+            : 'https://www-bethe-el-com-app.onrender.com';
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
