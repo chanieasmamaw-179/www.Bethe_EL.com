@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Beit-El Tibeb - Cultural Training Institute</title>
     <style>
-<style>
 /* Universal Reset */
 * {
     margin: 0;
@@ -240,7 +238,7 @@ nav {
 section {
     width: 100%;
     overflow-x: hidden;
-    padding: 60px 20px;
+
 }
 
 /* Advertising Section */
@@ -278,6 +276,7 @@ section {
     width: 100%;
     height: auto;
     min-height: 300px;
+    max-height: 500px;
 }
 
 .banner-slide.active {
@@ -287,6 +286,7 @@ section {
 .banner-slide img {
     width: 100%;
     height: auto;
+    max-height: 500px;
     object-fit: contain;
     object-position: center;
 }
@@ -992,6 +992,7 @@ footer a:hover {
 </head>
 <body>
     <!-- Navigation -->
+    <nav>
         <section>
             <div>
                 <img src="../static/img/LO_23.jpg" alt="Beit-El Tibeb Logo" class="logo-image">
@@ -1020,7 +1021,7 @@ footer a:hover {
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <p>Cultural Training Institute - Preserving Ethiopian-Israeli Heritage Through Art & Craft</p>
+            <p>Cultural Training Institute - Preserving Ethiopian-Israeli Heritage Through Art &amp; Craft</p>
             <a href="#programs" class="cta-button">Explore Programs</a>
         </div>
     </section>
@@ -1064,18 +1065,18 @@ footer a:hover {
                 <div class="team-member-card fade-in">
                     <img src="../static/img/T3.jpeg" alt="Artist Tesfaye Tegegn" class="team-member-image">
                     <h3>Artist Tesfaye Tegegn</h3>
-                    <p class="role">Co-Founder & Cultural Heritage Institute</p>
+                    <p class="role">Co-Founder &amp; Cultural Heritage Institute</p>
                     <p>Business Partner and cultural heritage expert. My role centers on preserving authentic cultural knowledge and training as a professional expert.</p>
                     <p>Master of Arts - MA, Visual Literacy and Curatorship, Seminar Hakibbutzim College<br>
                     Studied at University of Haifa</p>
-                    <p class="click-hint"><a href="https://www.facebook.com/elsa.gedamu" target="_blank">Facebook Profile</a></p>
+                    <p class="click-hint"><a href="https://web.facebook.com/priel322?rdid=KRMx89DtJtq6KPFc&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F1CotUicQsL%2F%3Fref%3D1%26_rdc%3D1%26_rdr" target="_blank">Facebook Profile</a></p>
                 </div>
 
                 <!-- Elsabet Tegegney -->
                 <div class="team-member-card fade-in">
                     <img src="../static/img/T1.jpeg" alt="Elsabet Tegegney" class="team-member-image">
                     <h3>Elsabet Tegegney</h3>
-                    <p class="role">Founder Beit-El Tibeb Ethiopian-Israeli heritage & Cultural Heritage General Manager and Director</p>
+                    <p class="role">Founder Beit-El Tibeb Ethiopian-Israeli heritage &amp; Cultural Heritage General Manager and Director</p>
                     <p>I bring deep expertise in Ethiopian-Israeli traditions, arts, and cultural practices. My role centers on preserving authentic cultural knowledge.</p>
                     <p>Master of Arts - MA, Visual Literacy in Art, Seminar Hakibbutzim College, Israel<br>
                     Bachelor's degree, Multidisciplinary and Creative Art, University of Haifa, Israel</p>
@@ -1139,7 +1140,7 @@ footer a:hover {
                 <div class="program-card fade-in">
                     <div class="program-image">🏺</div>
                     <div class="program-content">
-                        <h3>Pottery & Clay Arts</h3>
+                        <h3>Pottery &amp; Clay Arts</h3>
                         <p>Master traditional Ethiopian pottery techniques, from clay preparation to firing.</p>
                         <div class="program-details">
                             <span class="duration">6 Days</span>
@@ -1290,7 +1291,7 @@ footer a:hover {
                                 <option value="basket-weaving">Traditional Basket Weaving</option>
                                 <option value="coffee-ceremony">Ethiopian Coffee Ceremony</option>
                                 <option value="textile-arts">Traditional Textile Arts</option>
-                                <option value="pottery">Pottery & Clay Arts</option>
+                                <option value="pottery">Pottery &amp; Clay Arts</option>
                                 <option value="culinary">Culinary Heritage</option>
                                 <option value="immersion">Cultural Immersion Program</option>
                             </select>
@@ -1386,6 +1387,12 @@ footer a:hover {
 
     <!-- JavaScript -->
     <script>
+        // ===================================================================
+        // CHANGE THIS once your Flask backend is deployed (e.g. Render URL).
+        // Locally, this matches app.py's default port (5001).
+        // ===================================================================
+        const API_BASE_URL = 'http://localhost:5001'; // <-- REPLACE with your deployed Flask URL, e.g. 'https://your-app.onrender.com'
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1441,60 +1448,91 @@ footer a:hover {
             }
         });
 
-        // Registration form handling
-        const regForm = document.getElementById('registrationForm');
-        if (regForm) {
-            regForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const messageDiv = document.getElementById('message');
-                const submitBtn = document.getElementById('submitBtn');
-
-                if (messageDiv && submitBtn) {
-                    submitBtn.disabled = true;
-                    messageDiv.className = 'message info';
-                    messageDiv.textContent = 'Submitting...';
-                    messageDiv.style.display = 'block';
-
-                    setTimeout(() => {
-                        messageDiv.className = 'message success';
-                        messageDiv.textContent = 'Thank you! We will contact you soon.';
-                        submitBtn.disabled = false;
-                        regForm.reset();
-
-                        setTimeout(() => {
-                            messageDiv.style.display = 'none';
-                        }, 5000);
-                    }, 1500);
-                }
-            });
+        // Helper: show a message in a message div
+        function showFormMessage(messageDiv, text, type) {
+            if (!messageDiv) return;
+            messageDiv.className = 'message ' + type;
+            messageDiv.textContent = text;
+            messageDiv.style.display = 'block';
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
         }
 
-        // Contact form handling
+        // Real submit handler shared by both forms.
+        // Sends data to the Flask /register endpoint instead of faking success.
+        async function handleRegistrationSubmit(e, form, messageDiv, submitBtn) {
+            e.preventDefault();
+
+            const name = form.querySelector('[name="name"]')?.value?.trim() || '';
+            const email = form.querySelector('[name="email"]')?.value?.trim() || '';
+            const role = form.querySelector('[name="role"]')?.value?.trim() || 'participant';
+            const program = form.querySelector('[name="program"]')?.value?.trim() || '';
+            const message = form.querySelector('[name="message"]')?.value?.trim() || '';
+
+            if (!name || !email) {
+                showFormMessage(messageDiv, 'Please fill in your name and email.', 'error');
+                return;
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+            }
+            showFormMessage(messageDiv, 'Submitting...', 'info');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        role,
+                        program,
+                        registration_interest: message
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.status === 'success') {
+                    let successText = result.message || 'Thank you! We will contact you soon.';
+                    if (result.registration_id) {
+                        successText += ` (Registration ID: ${result.registration_id})`;
+                    }
+                    showFormMessage(messageDiv, successText, 'success');
+                    form.reset();
+                } else {
+                    showFormMessage(messageDiv, result.message || 'Submission failed. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showFormMessage(messageDiv, 'Could not reach the server. Please try again later.', 'error');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                }
+            }
+        }
+
+        // Registration form (interest form)
+        const regForm = document.getElementById('registrationForm');
+        if (regForm) {
+            const messageDiv = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+            regForm.addEventListener('submit', (e) => handleRegistrationSubmit(e, regForm, messageDiv, submitBtn));
+        }
+
+        // Contact / program registration form
         const contactForm = document.getElementById('exhibitionRegistrationForm');
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const messageDiv = document.getElementById('contactMessage');
-                const submitBtn = document.getElementById('contactSubmitBtn');
-
-                if (messageDiv && submitBtn) {
-                    submitBtn.disabled = true;
-                    messageDiv.className = 'message info';
-                    messageDiv.textContent = 'Sending...';
-                    messageDiv.style.display = 'block';
-
-                    setTimeout(() => {
-                        messageDiv.className = 'message success';
-                        messageDiv.textContent = 'Message sent successfully! We will contact you soon.';
-                        submitBtn.disabled = false;
-                        contactForm.reset();
-
-                        setTimeout(() => {
-                            messageDiv.style.display = 'none';
-                        }, 5000);
-                    }, 1500);
-                }
-            });
+            const messageDiv = document.getElementById('contactMessage');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            contactForm.addEventListener('submit', (e) => handleRegistrationSubmit(e, contactForm, messageDiv, submitBtn));
         }
 
         // Google Translate initialization
