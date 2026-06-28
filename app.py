@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify
 import smtplib
-import socket
 from flask_cors import CORS
 from email.message import EmailMessage
 import os
@@ -10,60 +9,44 @@ import datetime
 
 app = Flask(__name__)
 
-# Configure CORS to allow requests from your website.
-# Includes common local dev origins:
-#  - http://localhost:3000        (typical node/react dev server)
-#  - http://localhost:63342       (JetBrains IDE built-in preview server)
-#  - http://127.0.0.1:63342       (same, via IP instead of hostname)
+# ---------------------------------------------------------------------------
+# CORS CONFIG
+# Add your real frontend domain(s) here once deployed.
+# Keep localhost entries for local testing.
+# ---------------------------------------------------------------------------
 CORS(app, origins=[
     "https://www-bethe-el-com.onrender.com",
     "http://localhost:3000",
-    "http://localhost:63342",
+    "http://localhost:5001",
+    "http://127.0.0.1:5001",
+    "http://localhost:63342",   # IntelliJ/WebStorm built-in live-reload server
     "http://127.0.0.1:63342",
+    "null",                     # covers file:// origins in some browsers
 ])
 
-# Enable detailed logging
+# Enable logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 load_dotenv()
 
-# Configure your email settings
+# Email settings
 EMAIL_ADDRESS = 'chanieasmamaw@yahoo.com'
 EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 TO_EMAILS = ['chanieasmamaw@yahoo.com', 'elsa32@walla.com']
 
-# ============================================================
-# SMTP helper with a hard timeout and STARTTLS (587) instead
-# of SMTP_SSL (465). Render's free-tier outbound networking
-# can hang or silently drop long-lived SSL connections on 465,
-# which causes the whole request to hang until Render's proxy
-# kills it with a 502 - instead of returning a clean JSON error.
-# STARTTLS on 587 is more reliable across cloud providers, and
-# the explicit timeout means a bad connection fails fast with
-# a real error message instead of hanging.
-# ============================================================
-SMTP_HOST = 'smtp.mail.yahoo.com'
-SMTP_PORT = 587          # STARTTLS port (was 465/SSL)
-SMTP_TIMEOUT_SECONDS = 15
+# Program name mapping (moved to module level so it's always defined,
+# regardless of which branch of /register runs)
+PROGRAM_NAMES = {
+    'basket-weaving': 'Traditional Basket Weaving',
+    'coffee-ceremony': 'Ethiopian Coffee Ceremony',
+    'textile-arts': 'Traditional Textile Arts',
+    'pottery': 'Pottery & Clay Arts',
+    'culinary': 'Culinary Heritage',
+    'immersion': 'Cultural Immersion Program'
+}
 
 
-def send_via_smtp(messages):
-    """
-    Connects once and sends one or more EmailMessage objects.
-    Raises on failure so callers can catch and report a clean error.
-    `messages` is a list of EmailMessage instances.
-    """
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=SMTP_TIMEOUT_SECONDS) as smtp:
-        smtp.ehlo()
-        smtp.starttls()
-        smtp.ehlo()
-        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        for msg in messages:
-            smtp.send_message(msg)
-
-
-# Health check endpoint
 @app.route('/health')
 def health_check():
     return jsonify({'status': 'healthy', 'timestamp': datetime.datetime.now().isoformat()})
@@ -74,7 +57,6 @@ def home():
     return "Flask Email Server is running! Use POST /register for registrations."
 
 
-# Rest of your existing endpoints remain the same...
 @app.route('/test-email', methods=['GET'])
 def test_email():
     """Test endpoint to check email configuration"""
@@ -82,41 +64,28 @@ def test_email():
         return jsonify({'status': 'fail', 'message': 'EMAIL_PASSWORD not configured'}), 500
 
     try:
-        msg = EmailMessage()
-        msg['Subject'] = 'Test Email - Flask App'
-        msg['From'] = EMAIL_ADDRESS
-        msg['To'] = ', '.join(TO_EMAILS)
-        msg.set_content('This is a test email to verify the email configuration is working.')
+        with smtplib.SMTP_SSL('smtp.mail.yahoo.com', 465) as smtp:
+            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            logger.info("SMTP connection successful!")
 
-        logger.info(f"Connecting to {SMTP_HOST}:{SMTP_PORT} with {SMTP_TIMEOUT_SECONDS}s timeout...")
-        send_via_smtp([msg])
-        logger.info("Test email sent successfully!")
-        return jsonify({'status': 'success', 'message': 'Test email sent successfully!'})
+            msg = EmailMessage()
+            msg['Subject'] = 'Test Email - Flask App'
+            msg['From'] = EMAIL_ADDRESS
+            msg['To'] = ', '.join(TO_EMAILS)
+            msg.set_content('This is a test email to verify the email configuration is working.')
 
-    except socket.timeout:
-        logger.error(f"SMTP connection timed out after {SMTP_TIMEOUT_SECONDS}s")
-        return jsonify({
-            'status': 'fail',
-            'message': f'SMTP connection timed out after {SMTP_TIMEOUT_SECONDS}s. '
-                        f'The hosting network may be blocking outbound SMTP.'
-        }), 504
+            smtp.send_message(msg)
+            return jsonify({'status': 'success', 'message': 'Test email sent successfully!'})
 
-    except smtplib.SMTPAuthenticationError as e:
-        logger.error(f"SMTP Authentication failed: {str(e)}")
-        return jsonify({
-            'status': 'fail',
-            'message': 'Email authentication failed. The Yahoo app password may be wrong, '
-                        'expired, or revoked. Generate a new one in Yahoo Account Security.'
-        }), 500
-
-    except (smtplib.SMTPException, OSError) as e:
+    except Exception as e:
         logger.error(f"Email test failed: {str(e)}")
         return jsonify({'status': 'fail', 'message': f'Email test failed: {str(e)}'}), 500
 
 
 @app.route('/register', methods=['POST'])
 def register():
-    """Unified registration endpoint that handles both program applications and general interest registrations"""
+    """Unified registration endpoint that handles both program applications
+    and general interest registrations."""
     logger.info("Registration request received")
 
     if not EMAIL_PASSWORD:
@@ -144,24 +113,14 @@ def register():
         logger.error("Missing required fields")
         return jsonify({'status': 'fail', 'message': 'Missing required fields: name and email'}), 400
 
-    try:
-        is_program_registration = bool(program)
-        program_display = None
+    is_program_registration = bool(program)
+    program_display = PROGRAM_NAMES.get(program, program)  # always defined now, even if unused
 
+    try:
         admin_msg = EmailMessage()
 
         if is_program_registration:
             admin_msg['Subject'] = 'New Program Registration - Ethiopian Cultural Heritage'
-
-            program_names = {
-                'basket-weaving': 'Traditional Basket Weaving',
-                'coffee-ceremony': 'Ethiopian Coffee Ceremony',
-                'textile-arts': 'Traditional Textile Arts',
-                'pottery': 'Pottery & Clay Arts',
-                'culinary': 'Culinary Heritage',
-                'immersion': 'Cultural Immersion Program'
-            }
-            program_display = program_names.get(program, program)
 
             admin_content = "=== NEW PROGRAM REGISTRATION ===\n\n"
             admin_content += f"Full Name: {name}\n"
@@ -195,40 +154,44 @@ def register():
         admin_msg['To'] = ', '.join(TO_EMAILS)
         admin_msg.set_content(admin_content)
 
-        messages_to_send = [admin_msg]
+        logger.info("Attempting to connect to SMTP server...")
+        with smtplib.SMTP_SSL('smtp.mail.yahoo.com', 465) as smtp:
+            logger.info("SMTP connection established")
+            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            logger.info("SMTP login successful")
 
-        reg_id = None
-        if is_program_registration:
-            user_msg = EmailMessage()
-            user_msg['Subject'] = 'Registration Confirmation - Ethiopian Cultural Heritage Programs'
-            user_msg['From'] = EMAIL_ADDRESS
-            user_msg['To'] = email
+            smtp.send_message(admin_msg)
+            logger.info("Admin notification email sent successfully!")
 
-            reg_id = f"ECH-{datetime.datetime.now().strftime('%Y%m%d')}-{hash(email) % 10000:04d}"
+            reg_id = None
+            if is_program_registration:
+                user_msg = EmailMessage()
+                user_msg['Subject'] = 'Registration Confirmation - Ethiopian Cultural Heritage Programs'
+                user_msg['From'] = EMAIL_ADDRESS
+                user_msg['To'] = email
 
-            user_content = f"Dear {name},\n\n"
-            user_content += "Thank you for your interest in our Ethiopian Cultural Heritage Programs!\n\n"
-            user_content += "We have received your registration with the following details:\n\n"
-            user_content += f"• Name: {name}\n"
-            user_content += f"• Email: {email}\n"
-            user_content += f"• Role: {role.title()}\n"
-            user_content += f"• Program of Interest: {program_display}\n"
+                reg_id = f"ECH-{datetime.datetime.now().strftime('%Y%m%d')}-{hash(email) % 10000:04d}"
 
-            if registration_interest:
-                user_content += f"• Your Message: {registration_interest}\n"
+                user_content = f"Dear {name},\n\n"
+                user_content += "Thank you for your interest in our Ethiopian Cultural Heritage Programs!\n\n"
+                user_content += "We have received your registration with the following details:\n\n"
+                user_content += f"• Name: {name}\n"
+                user_content += f"• Email: {email}\n"
+                user_content += f"• Role: {role.title()}\n"
+                user_content += f"• Program of Interest: {program_display}\n"
 
-            user_content += f"• Registration ID: {reg_id}\n\n"
-            user_content += "Our team will review your application and contact you within 2-3 business days to discuss the next steps.\n\n"
-            user_content += "If you have any immediate questions, please don't hesitate to contact us at chanieasmamaw@yahoo.com.\n\n"
-            user_content += "Best regards,\n"
-            user_content += "Ethiopian Cultural Heritage Programs Team"
+                if registration_interest:
+                    user_content += f"• Your Message: {registration_interest}\n"
 
-            user_msg.set_content(user_content)
-            messages_to_send.append(user_msg)
+                user_content += f"• Registration ID: {reg_id}\n\n"
+                user_content += "Our team will review your application and contact you within 2-3 business days to discuss the next steps.\n\n"
+                user_content += "If you have any immediate questions, please don't hesitate to contact us at chanieasmamaw@yahoo.com.\n\n"
+                user_content += "Best regards,\n"
+                user_content += "Ethiopian Cultural Heritage Programs Team"
 
-        logger.info(f"Connecting to {SMTP_HOST}:{SMTP_PORT} with {SMTP_TIMEOUT_SECONDS}s timeout...")
-        send_via_smtp(messages_to_send)
-        logger.info(f"Sent {len(messages_to_send)} email(s) successfully!")
+                user_msg.set_content(user_content)
+                smtp.send_message(user_msg)
+                logger.info("User confirmation email sent successfully!")
 
         if is_program_registration:
             return jsonify({
@@ -242,31 +205,12 @@ def register():
             'message': 'Registration sent successfully!'
         }), 200
 
-    except socket.timeout:
-        logger.error(f"SMTP connection timed out after {SMTP_TIMEOUT_SECONDS}s")
-        return jsonify({
-            'status': 'fail',
-            'message': 'Could not send email right now (connection to the mail server timed out). '
-                        'Please try again in a moment.'
-        }), 504
-
     except smtplib.SMTPAuthenticationError as e:
         logger.error(f"SMTP Authentication failed: {str(e)}")
-        return jsonify(
-            {'status': 'fail', 'message': 'Email authentication failed. Please check email credentials.'}), 500
-
+        return jsonify({'status': 'fail', 'message': 'Email authentication failed. Please check email credentials.'}), 500
     except smtplib.SMTPException as e:
         logger.error(f"SMTP error: {str(e)}")
         return jsonify({'status': 'fail', 'message': f'Email delivery failed: {str(e)}'}), 500
-
-    except OSError as e:
-        # Covers connection refused / network unreachable / DNS failures
-        logger.error(f"Network error talking to SMTP server: {str(e)}")
-        return jsonify({
-            'status': 'fail',
-            'message': 'Could not reach the mail server right now. Please try again shortly.'
-        }), 502
-
     except Exception as e:
         logger.error(f"Unexpected error during registration: {str(e)}")
         return jsonify({'status': 'fail', 'message': 'Registration failed. Please try again later.'}), 500
