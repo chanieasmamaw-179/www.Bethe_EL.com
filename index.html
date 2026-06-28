@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -159,7 +158,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: linear-gradient(135deg, #FFD700 0%, #FFB700 50%, #FF8C00 100%);
+
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
@@ -203,11 +202,11 @@ nav {
 }
 
 .nav-menu a {
-    color: #5c3b1e;
+    color: #00008b;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    font-size: clamp(1rem, 2vw, 1rem);
 }
 
 .nav-menu a:hover {
@@ -239,7 +238,7 @@ nav {
 section {
     width: 100%;
     overflow-x: hidden;
-    padding: 60px 20px;
+
 }
 
 /* Advertising Section */
@@ -277,6 +276,7 @@ section {
     width: 100%;
     height: auto;
     min-height: 300px;
+    max-height: 500px;
 }
 
 .banner-slide.active {
@@ -286,6 +286,7 @@ section {
 .banner-slide img {
     width: 100%;
     height: auto;
+    max-height: 500px;
     object-fit: contain;
     object-position: center;
 }
@@ -323,9 +324,8 @@ section {
     right: 10px;
 }
 
-/* About Section */
 .about, .about-section {
-    padding: 60px 20px;
+    padding: 0px 0px;  /* was 60px — change the first value */
     background: linear-gradient(135deg, #f5f0e8 0%, #ede0d3 50%, #e6d4c1 100%);
     width: 100%;
 }
@@ -991,13 +991,14 @@ footer a:hover {
 </head>
 <body>
     <!-- Navigation -->
+    <nav>
         <section>
             <div>
                 <img src="../static/img/LO_23.jpg" alt="Beit-El Tibeb Logo" class="logo-image">
             </div>
         </section>
 
-        <section style="font-size: 40px; color: #8b4513; text-align: center; padding: 20px;">
+        <section style="font-size: 40px; color: #9e3a0f; text-align: center; padding: 20px;">
             <strong>Beit-El Tibel Cultural Heritage & Arts</strong>
         </section>
 
@@ -1019,7 +1020,7 @@ footer a:hover {
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <p>Cultural Training Institute - Preserving Ethiopian-Israeli Heritage Through Art & Craft</p>
+            <p>Cultural Training Institute - Preserving Ethiopian-Israeli Heritage Through Art &amp; Craft</p>
             <a href="#programs" class="cta-button">Explore Programs</a>
         </div>
     </section>
@@ -1063,18 +1064,18 @@ footer a:hover {
                 <div class="team-member-card fade-in">
                     <img src="../static/img/T3.jpeg" alt="Artist Tesfaye Tegegn" class="team-member-image">
                     <h3>Artist Tesfaye Tegegn</h3>
-                    <p class="role">Co-Founder & Cultural Heritage Institute</p>
+                    <p class="role">Co-Founder &amp; Cultural Heritage Institute</p>
                     <p>Business Partner and cultural heritage expert. My role centers on preserving authentic cultural knowledge and training as a professional expert.</p>
                     <p>Master of Arts - MA, Visual Literacy and Curatorship, Seminar Hakibbutzim College<br>
                     Studied at University of Haifa</p>
-                    <p class="click-hint"><a href="https://www.facebook.com/elsa.gedamu" target="_blank">Facebook Profile</a></p>
+                    <p class="click-hint"><a href="https://web.facebook.com/priel322?rdid=pNAT27HsSkLHodtc&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F1CotUicQsL%2F%3Fref%3D1%26_rdc%3D1%26_rdr" target="_blank">Facebook Profile</a></p>
                 </div>
 
                 <!-- Elsabet Tegegney -->
                 <div class="team-member-card fade-in">
                     <img src="../static/img/T1.jpeg" alt="Elsabet Tegegney" class="team-member-image">
                     <h3>Elsabet Tegegney</h3>
-                    <p class="role">Founder Beit-El Tibeb Ethiopian-Israeli heritage & Cultural Heritage General Manager and Director</p>
+                    <p class="role">Founder Beit-El Tibeb Ethiopian-Israeli heritage &amp; Cultural Heritage General Manager and Director</p>
                     <p>I bring deep expertise in Ethiopian-Israeli traditions, arts, and cultural practices. My role centers on preserving authentic cultural knowledge.</p>
                     <p>Master of Arts - MA, Visual Literacy in Art, Seminar Hakibbutzim College, Israel<br>
                     Bachelor's degree, Multidisciplinary and Creative Art, University of Haifa, Israel</p>
@@ -1138,7 +1139,7 @@ footer a:hover {
                 <div class="program-card fade-in">
                     <div class="program-image">🏺</div>
                     <div class="program-content">
-                        <h3>Pottery & Clay Arts</h3>
+                        <h3>Pottery &amp; Clay Arts</h3>
                         <p>Master traditional Ethiopian pottery techniques, from clay preparation to firing.</p>
                         <div class="program-details">
                             <span class="duration">6 Days</span>
@@ -1289,7 +1290,7 @@ footer a:hover {
                                 <option value="basket-weaving">Traditional Basket Weaving</option>
                                 <option value="coffee-ceremony">Ethiopian Coffee Ceremony</option>
                                 <option value="textile-arts">Traditional Textile Arts</option>
-                                <option value="pottery">Pottery & Clay Arts</option>
+                                <option value="pottery">Pottery &amp; Clay Arts</option>
                                 <option value="culinary">Culinary Heritage</option>
                                 <option value="immersion">Cultural Immersion Program</option>
                             </select>
@@ -1378,18 +1379,18 @@ footer a:hover {
         <div class="container">
             <p>&copy; 2025 Beit-El Tibeb Cultural Training Institute. Preserving Heritage, Inspiring Futures.</p>
             <p>Web developer: Asmamaw Yehun (Ph.D and Certified Software Engineer)</p>
-            <p>Email: chanieasmamaw@yahoo.com, +4917625315666</p>
+            <p>Email: chanieasmamaw@yahoo.com, +251975882230</p>
             <a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank" style="color: #FFD700;">LinkedIn Profile</a>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // ============================================================
-        // Flask backend base URL — change this if you redeploy
-        // the backend service under a different name.
-        // ============================================================
-        const API_BASE_URL = 'https://www-bethe-el-com-app.onrender.com';
+        // ===================================================================
+        // CHANGE THIS once your Flask backend is deployed (e.g. Render URL).
+        // Locally, this matches app.py's default port (5001).
+        // ===================================================================
+        const API_BASE_URL = 'http://localhost:5001'; // <-- REPLACE with your deployed Flask URL, e.g. 'https://your-app.onrender.com'
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1446,121 +1447,91 @@ footer a:hover {
             }
         });
 
-        // Helper: show a message inside a given message div
-        function displayFormMessage(messageDiv, text, type) {
+        // Helper: show a message in a message div
+        function showFormMessage(messageDiv, text, type) {
             if (!messageDiv) return;
             messageDiv.className = 'message ' + type;
             messageDiv.textContent = text;
             messageDiv.style.display = 'block';
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
         }
 
-        // ============================================================
-        // Registration form handling ("Register Your Interest")
-        // Sends: name, email, role  ->  POST /register
-        // ============================================================
-        const regForm = document.getElementById('registrationForm');
-        if (regForm) {
-            regForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const messageDiv = document.getElementById('message');
-                const submitBtn = document.getElementById('submitBtn');
+        // Real submit handler shared by both forms.
+        // Sends data to the Flask /register endpoint instead of faking success.
+        async function handleRegistrationSubmit(e, form, messageDiv, submitBtn) {
+            e.preventDefault();
 
-                const payload = {
-                    name: regForm.querySelector('[name="name"]').value.trim(),
-                    email: regForm.querySelector('[name="email"]').value.trim(),
-                    role: regForm.querySelector('[name="role"]').value
-                };
+            const name = form.querySelector('[name="name"]')?.value?.trim() || '';
+            const email = form.querySelector('[name="email"]')?.value?.trim() || '';
+            const role = form.querySelector('[name="role"]')?.value?.trim() || 'participant';
+            const program = form.querySelector('[name="program"]')?.value?.trim() || '';
+            const message = form.querySelector('[name="message"]')?.value?.trim() || '';
 
-                if (!payload.name || !payload.email || !payload.role) {
-                    displayFormMessage(messageDiv, 'Please fill in all fields.', 'error');
-                    return;
-                }
+            if (!name || !email) {
+                showFormMessage(messageDiv, 'Please fill in your name and email.', 'error');
+                return;
+            }
 
+            if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Submitting...';
-                displayFormMessage(messageDiv, 'Submitting...', 'info');
+            }
+            showFormMessage(messageDiv, 'Submitting...', 'info');
 
-                try {
-                    const response = await fetch(`${API_BASE_URL}/register`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
+            try {
+                const response = await fetch(`${API_BASE_URL}/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        role,
+                        program,
+                        registration_interest: message
+                    })
+                });
 
-                    const result = await response.json();
+                const result = await response.json();
 
-                    if (response.ok && result.status === 'success') {
-                        displayFormMessage(messageDiv, result.message || 'Thank you! We will contact you soon.', 'success');
-                        regForm.reset();
-                    } else {
-                        displayFormMessage(messageDiv, result.message || 'Registration failed. Please try again.', 'error');
+                if (response.ok && result.status === 'success') {
+                    let successText = result.message || 'Thank you! We will contact you soon.';
+                    if (result.registration_id) {
+                        successText += ` (Registration ID: ${result.registration_id})`;
                     }
-                } catch (err) {
-                    console.error('Registration error:', err);
-                    displayFormMessage(messageDiv, 'Could not reach the server. Please check your connection and try again.', 'error');
-                } finally {
+                    showFormMessage(messageDiv, successText, 'success');
+                    form.reset();
+                } else {
+                    showFormMessage(messageDiv, result.message || 'Submission failed. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showFormMessage(messageDiv, 'Could not reach the server. Please try again later.', 'error');
+            } finally {
+                if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Submit';
-                    setTimeout(() => { messageDiv.style.display = 'none'; }, 6000);
                 }
-            });
+            }
         }
 
-        // ============================================================
-        // Contact form handling ("Register for Programs")
-        // Sends: name, email, program, message  ->  POST /register
-        // ============================================================
+        // Registration form (interest form)
+        const regForm = document.getElementById('registrationForm');
+        if (regForm) {
+            const messageDiv = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+            regForm.addEventListener('submit', (e) => handleRegistrationSubmit(e, regForm, messageDiv, submitBtn));
+        }
+
+        // Contact / program registration form
         const contactForm = document.getElementById('exhibitionRegistrationForm');
         if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const messageDiv = document.getElementById('contactMessage');
-                const submitBtn = document.getElementById('contactSubmitBtn');
-
-                const payload = {
-                    name: document.getElementById('name').value.trim(),
-                    email: document.getElementById('email').value.trim(),
-                    program: document.getElementById('program').value,
-                    message: document.getElementById('message-text').value.trim()
-                };
-
-                if (!payload.name || !payload.email || !payload.program) {
-                    displayFormMessage(messageDiv, 'Please fill in all required fields.', 'error');
-                    return;
-                }
-
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                displayFormMessage(messageDiv, 'Sending...', 'info');
-
-                try {
-                    const response = await fetch(`${API_BASE_URL}/register`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    const result = await response.json();
-
-                    if (response.ok && result.status === 'success') {
-                        let successText = result.message || 'Message sent successfully! We will contact you soon.';
-                        if (result.registration_id) {
-                            successText += ` (Registration ID: ${result.registration_id})`;
-                        }
-                        displayFormMessage(messageDiv, successText, 'success');
-                        contactForm.reset();
-                    } else {
-                        displayFormMessage(messageDiv, result.message || 'Message could not be sent. Please try again.', 'error');
-                    }
-                } catch (err) {
-                    console.error('Contact form error:', err);
-                    displayFormMessage(messageDiv, 'Could not reach the server. Please check your connection and try again.', 'error');
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit';
-                    setTimeout(() => { messageDiv.style.display = 'none'; }, 6000);
-                }
-            });
+            const messageDiv = document.getElementById('contactMessage');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            contactForm.addEventListener('submit', (e) => handleRegistrationSubmit(e, contactForm, messageDiv, submitBtn));
         }
 
         // Google Translate initialization
