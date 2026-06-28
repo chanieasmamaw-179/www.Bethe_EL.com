@@ -6,12 +6,12 @@ bind = "0.0.0.0:10000"
 backlog = 2048
 
 # Worker processes
-workers = multiprocessing.cpu_count() * 2 + 1
+workers = min(multiprocessing.cpu_count() * 2 + 1, 4)
 worker_class = 'sync'
 worker_connections = 1000
-timeout = 60  # Increased from default 30 seconds
+timeout = 120  # Increased from default 30 seconds
 keepalive = 5
-graceful_timeout = 30
+graceful_timeout = 60
 
 # Logging
 accesslog = '-'
